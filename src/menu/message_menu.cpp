@@ -20,9 +20,9 @@
  */
 
 #include "menu.h"
-#include <item.h>
-#include <game.h>
-#include <defs.h>
+#include "item.h"
+#include "game.h"
+#include "defs.h"
 
 
 MessageMenu::MessageMenu(int padding, Tile _border, Game* _game, int _page, int _selection) : Menu(padding, _border, _selection)
@@ -61,7 +61,7 @@ Menu* MessageMenu::make_selection()
         return new MessageMenu(1, Tileset::get("BLOCK_WALL"), game, page + 1, 0);
     } else if(options[selection] == "New Messages") {
         return new MessageMenu(1, Tileset::get("BLOCK_WALL"), game, page - 1, 1);
-    } else { 
+    } else {
         return new MainMenu(1, Tileset::get("BLOCK_WALL"),  game);
     }
 }

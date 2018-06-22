@@ -20,9 +20,9 @@
  */
 
 #include "menu.h"
-#include <game.h>
-#include <world_map_gui.h>
-#include <defs.h>
+#include "game.h"
+#include "world_map_gui.h"
+#include "defs.h"
 
 LoadMenu::LoadMenu(int padding, Tile _border, Game &g, WorldMapGUI &wmg) : Menu(padding, _border)
 {

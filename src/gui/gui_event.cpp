@@ -20,8 +20,8 @@
  *  along with ROGUELIKETHING.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <gui.h>
-#include <menu.h>
+#include "gui.h"
+#include "menu.h"
 
 /**
  * \todo find a better way to do key input; currently we're using polling, which
@@ -241,7 +241,7 @@ void GUI::perform_action_press(SDLKey key) {
                 game.toggle_pause();
             }
             break;
-        
+
         case SDLK_UP:
             if(current_screen == DIRECTION_SCREEN)
             {
@@ -273,7 +273,7 @@ void GUI::perform_action_press(SDLKey key) {
             break;
         case SDLK_r:
             if(current_screen == MAP_SCREEN) {
-                world_map_gui.new_world(); 
+                world_map_gui.new_world();
             }
             break;
         default:
@@ -310,7 +310,7 @@ void GUI::perform_action_cont() {
         //THIS IS IMPORTANT, as it it turns out.
         if(game.is_initialized() && game.is_paused() == false) {
             game.undo_visibility();
-            IntPoint old_chunk = game.main_char.get_chunk(); 
+            IntPoint old_chunk = game.main_char.get_chunk();
             if(keystate[SDLK_LEFT]){
                 game.move_char(-1, 0, &game.main_char);
             }
@@ -324,7 +324,7 @@ void GUI::perform_action_cont() {
                 game.move_char(0, 1, &game.main_char);
             }
             IntPoint new_chunk = game.main_char.get_chunk();
-            
+
             //If the main character moved chunks, then it should update
             //things to reflect that.
             if(old_chunk != new_chunk)
@@ -344,7 +344,7 @@ void GUI::add_key_input(SDLKey sym, Uint16 unicode)
         case SDLK_RETURN:
             if(current_screen == DEBUG_CONSOLE)
             {
-                debug.run_command(input); 
+                debug.run_command(input);
                 input = "";
             }
             break;

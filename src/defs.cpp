@@ -19,7 +19,7 @@
  *  along with ROGUELIKETHING.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <defs.h>
+#include "defs.h"
 
 std::string STAT_NAMES[NUM_STATS] = {"Health", "Attack", "Endurance", "Experience", "Level", "Str", "Dex", "Int"};
 
@@ -42,7 +42,7 @@ int get_part_hit(int chance)
 /****************************
  *   TERRAIN DEFS
  ***************************/
-//{int char_count, int tile_id, int color, bool can_be_moved_through, bool visible, bool opaque, bool seen, bool can_build_overtop} 
+//{int char_count, int tile_id, int color, bool can_be_moved_through, bool visible, bool opaque, bool seen, bool can_build_overtop}
 namespace tiledef {
     Tile  EMPTY           =  {0,    0,   0,             1,  0,  0,  0,  0};
     Tile  OVERWORLD_DIRT  =  {250,  1,   BROWN,         1,  0,  0,  0,  1};
@@ -80,7 +80,7 @@ namespace tiledef {
     Tile  HUT_WALL        =  {35,   33,  BROWN,         0,  0,  1,  0,  0};
     Tile  AXE             =  {213,  34,  GRAY,          1,  0,  0,  0,  0};
     Tile  LOG             =  {220,  35,  BROWN,         1,  0,  0,  0,  0};
-    Tile  WOLF            =  {119,  36,  BROWN,         1,  0,  0,  0,  0};   
+    Tile  WOLF            =  {119,  36,  BROWN,         1,  0,  0,  0,  0};
     Tile  HUMAN           =  {104,  37,  TAN,           1,  0,  0,  0,  0};
     Tile  COBBLE          =  {42,   38,  GRAY,          1,  0,  0,  0,  0};
 
@@ -148,18 +148,18 @@ namespace map_tile {
     MapTile WORLD_CONSTRUCTION_INDEX[NUM_WORLD_TILES] = {
         MAP_FOREST,  //ID 0
         CITY,
-        MAP_WATER, 
+        MAP_WATER,
     };
 
     MapTile MAP_TILE_INDEX[NUM_MAP_TILE] = { //THIS MUST CORRESPOND TO MAP TILE IDS
         MAP_FOREST,  //ID 0
         CITY,
-        MAP_WATER, 
+        MAP_WATER,
         MAP_BEACH,   //ETC
         CITY_MARKET,
         CITY_RESIDENTIAL,
         CITY_NOBILITY,
-        MAP_DEFAULT, 
+        MAP_DEFAULT,
         CURSOR
     };
 }

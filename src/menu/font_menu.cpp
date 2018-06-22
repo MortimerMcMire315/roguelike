@@ -20,8 +20,8 @@
  */
 
 #include "menu.h"
-#include <game.h>
-#include <defs.h>
+#include "game.h"
+#include "defs.h"
 
 
 #define FONTDIR DATADIR "/font/"

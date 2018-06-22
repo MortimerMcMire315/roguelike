@@ -21,15 +21,16 @@
 
 #ifndef ITEM_H
 #define ITEM_H
-#include <defs.h>
+#include "defs.h"
+#include "int_point.h"
+
 #include <string>
-#include <int_point.h>
 
 /**
  * String containing the different body parts.
  * \todo Move this to defs.h
  */
-static std::string BODY_PARTS[] = {"Head", "Torso", "Legs", "Feet", "Arms", "Hands", "Wielding"}; 
+static std::string BODY_PARTS[] = {"Head", "Torso", "Legs", "Feet", "Arms", "Hands", "Wielding"};
 
 
 /**
@@ -44,17 +45,17 @@ class Item
          * What the item is called.
          */
         std::string name;
-        
+
         /**
          * A brief description of the item.
          */
         std::string description;
-        
+
         /**
          * How much the item weighs.
          */
         int weight;
-        
+
         /**
          * Where the item currently is.
          * This is only used as a way to graphically represent
@@ -64,16 +65,16 @@ class Item
          * again.
          */
         IntPoint coords;
-        
+
         /**
          * A graphical representation of the item.
          */
         Tile sprite;
-        
+
         /**
          * How likely it is that the item will appear.
          */
-        int rarity; 
+        int rarity;
 
         /**
          * The size of the item.
@@ -96,35 +97,35 @@ class Item
          * Whether or not the item can be equipped by any character.
          */
         bool can_equip;
-        
+
         /**
          * Whether the item has a usable component.
          * If this is yes, that means that the item has some active component
          * other than its base use, e.g. a sword that has a spell attached to it.
          */
         bool can_use;
-        
+
         /**
          * Whether or not an item can be wielded as a weapon by a character.
          */
         bool can_wield;
-        
+
         /**
          * Whether or not a character can consume an item.
          */
         bool can_consume;
-        
+
         /**
          * The blank constructor.
          */
         Item();
-        
+
         /**
          * The basic constructor for an item.
-         * @param _coords The coordinates to place the item at. 
+         * @param _coords The coordinates to place the item at.
          */
         Item(IntPoint _coords);
-        
+
         /**
          * A constructor for an item.
          * @param _rarity Sets the class member rarity.
@@ -134,22 +135,22 @@ class Item
          * @param _coords Set the coordinates of the item.
          */
         Item(int _rarity, int _weight, Tile _sprite, std::string _name, IntPoint _coords, std::string _description, int _category, bool _use);
-        
+
         /**
          * Public accessor for the member variable weight.
          */
         int get_weight();
-        
+
         /**
          * Public accessor for the member variable sprite.
          */
         Tile* get_sprite();
-        
+
         /**
          * Public accessor for the coordinates.
          */
         IntPoint get_coords();
-        
+
         /**
          * Public setter for the coordinates.
          * @param _c The new coords to be set.
@@ -160,12 +161,12 @@ class Item
          * Public accessor for the name.
          */
         std::string get_name();
-        
+
         /**
          * Public accessor for the rarity.
          */
         int get_rarity();
-        
+
         /**
          * Public accessor for the description.
          */
@@ -221,7 +222,7 @@ class Equipment : public Item
          * Determines the damage bonus gained from the equipment.
          */
         std::vector<float> to_dam;
-    
+
         /**
          * The material the equipment is made out of.
          */
@@ -231,17 +232,17 @@ class Equipment : public Item
          * Blank constructor.
          */
         Equipment();
-        
-        
+
+
         /**
          * Constructor for the equipment.
-         * This is the normally used constructor, relying on the defined EquipTypes and 
+         * This is the normally used constructor, relying on the defined EquipTypes and
          * taking a set of coordinates.
          * @param _coords Sets the coordinates of the equipment.
          * @param eqp THe template for the equipment.
          */
         Equipment(IntPoint _coords, EquipType eqp);
-        
+
         /**
          * For performaing an action other than increasing the armor class.
          * @see Item::perform_action()
@@ -252,7 +253,7 @@ class Equipment : public Item
          * Public accessor for body_part.
          */
         int get_body_part();
-        
+
         /**
          * Public accessor for to_hit.
          */
@@ -285,7 +286,7 @@ class Weapon : public Item
          * done by a weapon.
          */
         int damage;
-        
+
         /**
          * How many tiles the weapon can reach.
          */
@@ -299,33 +300,33 @@ class Weapon : public Item
          */
         int type;
 
-    
+
     public:
         /**
          * Blank constructor.
          */
         Weapon();
-        
+
         /**
          * Constructor for the weapon.
-         * This is the normally used constructor, relying on the defined WeaponTypes and 
+         * This is the normally used constructor, relying on the defined WeaponTypes and
          * taking a set of coordinates.
          * @param _coords Sets the coordinates of the weapon.
          * @param wpn The template for the weapon.
          */
         Weapon(IntPoint _coords, WeaponType wpn);
-        
+
         /**
          * For performaing an action other than changing the attack of the character.
          * @see Item::perform_action()
          */
         void perform_action();
-        
+
         /**
          * Public accessor for the variable type.
          */
         int get_type();
-        
+
         /**
          * Public accessor for the variable to_dam.
          */
@@ -348,12 +349,12 @@ class Consumable : public Item
          * @see Character::stats
          */
         int stat_modified;
-        
+
         /**
          * The magnitude that the stat should be modified by.
          */
         int amount_modified;
-        
+
         /**
          * How the consumable will behave.
          * Corresponds to the enum ConsumableTypes, which defines
@@ -365,16 +366,16 @@ class Consumable : public Item
          * Blank constructor.
          */
         Consumable();
-        
+
         /**
          * Constructor for the consumable.
-         * This is the normally used constructor, relying on the defined ConsumableType and 
+         * This is the normally used constructor, relying on the defined ConsumableType and
          * taking a set of coordinates.
          * @param _coords Sets the coordinates of the consumable.
          * @param cons The template for th consumable.
          */
         Consumable(IntPoint _coords, ConsumableType cons);
-        
+
         /**
          * For performaing an action other than changing a stat of the character.
          * @see Item::perform_action()
@@ -385,12 +386,12 @@ class Consumable : public Item
          * Public accessor for the variable stat_modified.
          */
         int get_stat();
-        
+
         /**
          * Public accessor for the variable amount_modified.
          */
         int get_amount();
-        
+
         /**
          * Public accessor for the variable type.
          */
@@ -410,16 +411,16 @@ class Misc : public Item
          * Blank constructor.
          */
         Misc();
-         
+
         /**
          * Constructor for the misc item.
-         * This is the normally used constructor, relying on the defined MiscType and 
+         * This is the normally used constructor, relying on the defined MiscType and
          * taking a set of coordinates.
          * @param _coords Sets the coordinates of the misc item.
          * @param misc The template for the misc item.
          */
         Misc(IntPoint _coords, MiscType misc);
-        
+
         /**
          * For performaing an action.
          * @see Item::perform_action()

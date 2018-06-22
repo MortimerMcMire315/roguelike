@@ -19,7 +19,7 @@
  *  along with ROGUELIKETHING.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <item.h>
+#include "item.h"
 
 Item::Item()
 {

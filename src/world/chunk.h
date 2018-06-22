@@ -32,15 +32,15 @@
 #include <fstream>
 #include <boost/filesystem.hpp>
 #include <assert.h>
-
-#include <constants.h>
-#include <chunk_layer.h>
-#include <defs.h>
 #include <ctime>
-#include <spring_matrix.h>
-#include <building.h>
-#include <city_district.h>
-#include <block.h>
+
+#include "constants.h"
+#include "chunk_layer.h"
+#include "defs.h"
+#include "spring_matrix.h"
+#include "building.h"
+#include "city_district.h"
+#include "block.h"
 
 class Plant;
 class Spawner;
@@ -203,11 +203,11 @@ class Chunk{
          * Builds a chunk with only a sandy overworld.
          */
         void build_beach_chunk();
-        
+
         /**
          * Builds a chunk with a city in it.  As of right now,
          * there's no continuity between adjacent chunks which
-         * are city chunks, which is too bad, and I need to 
+         * are city chunks, which is too bad, and I need to
          * think of a way to apply a single generated city
          * across multiple chunks.
          */
@@ -217,7 +217,7 @@ class Chunk{
          * Adds some dank trees to the current chunk.
          */
         void build_some_dank_trees();
-       
+
         /**
          * Check to see if something can be built at a point in the chunk.
          */
@@ -319,12 +319,12 @@ class Chunk{
          */
         std::vector<Plant>* get_plants(int depth);
 
-        
+
         /**
          * Removes a plant from the chunk.
          */
         void kill_plant(Plant *plant, int depth);
-        
+
         /**
          * Get the heightmap for this chunk.
          */
@@ -352,7 +352,7 @@ class Chunk{
         /**
          * Given an int, will assume it is no more than 4 bytes long and pack it
          * into a char array at a given index.
-         * 
+         *
          * @param num the number to pack
          * @param file the char array to pack into
          * @param index the index to start at
@@ -491,7 +491,7 @@ class Chunk{
          * e.g. water and anything else.
          */
         void blend_hard(int row, int col, MapTile other);
-        
+
         /**
          * Blends chunks "normally," so that each tile in a range has a
          * 50% chance of becoming the other chunk's base tile.
@@ -502,7 +502,7 @@ class Chunk{
          * Finds a plant at the given coords.  Returns NULL if none is found.
          */
         Plant* get_plant(IntPoint coords, int depth);
-    
+
 
         /**
          * Adds a building to the chunk.

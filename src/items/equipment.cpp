@@ -19,8 +19,8 @@
  *  along with ROGUELIKETHING.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <item.h>
-#include <character.h>
+#include "item.h"
+#include "character.h"
 using namespace equipment;
 
 Equipment::Equipment()

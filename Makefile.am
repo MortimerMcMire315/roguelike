@@ -32,7 +32,7 @@ defdir=$(localdatadir)/defs
 tileini=$(defdir)/tile.ini
 colorini=$(defdir)/color.ini
 
-DEFS = -DDATADIR=\"$(localdatadir)\" -DTILEINI=\"$(tileini)\" -DCOLORINI=\"$(colorini)\"
+DEFS = -DDATADIR=\"$(localdatadir)\" -DDEFDIR=\"$(defdir)\" -DTILEINI=\"$(tileini)\" -DCOLORINI=\"$(colorini)\"
 
 ACLOCAL_AMFLAGS = -I m4
 

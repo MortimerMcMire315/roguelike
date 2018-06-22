@@ -21,8 +21,9 @@
 #define _OVERWORLD_H
 
 #include <vector>
-#include <defs.h>
 #include <iostream>
+
+#include "defs.h"
 
 class ChunkLayer;
 class Chunk;
@@ -63,7 +64,7 @@ namespace overworld_gen {
      * city object.
      */
     void build_city_overworld(ChunkLayer& ground);
-    
+
     /**
      * Build the edges of this chunk's topmost layer based on the edges of the
      * chunks surrounding it.

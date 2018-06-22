@@ -20,7 +20,7 @@
 #include <assert.h>
 #include <stdlib.h>
 
-#include <game.h>
+#include "game.h"
 
 using namespace std;
 
@@ -93,7 +93,7 @@ void Game::init(const WorldMap& _world_map, IntPoint selected_chunk) {
     //This is the "starting" chunk (arbitrary).
 
     //TODO put this clutter somewhere else
-    int main_stat_array[NUM_STATS] = {100, 2, 100, 0, 1, 10, 10, 10}; 
+    int main_stat_array[NUM_STATS] = {100, 2, 100, 0, 1, 10, 10, 10};
     std::vector<int> main_stats(&main_stat_array[0], &main_stat_array[0] + NUM_STATS);
     main_char = Character(main_stats, 50, 25, Tileset::get("MAIN_CHAR"), misc::player_corpse, selected_chunk.col, selected_chunk.row, 0, 0, 70, -1, "You!", weapons::fist);
     main_char.add_item(new Consumable(main_char.get_chunk(), consumables::potato));
@@ -173,7 +173,7 @@ void Game::refresh() {
         for (int j = 0; j < GAME_WIDTH; j++) {
             //aight, this needs some comments becuase ain't nobody can
             //read this
-            
+
             //if you suddenly start getting weird visual errors when you
             //try to make the buffer hold more than 3 chunks at a time,
             //this is why.  Right now, it assumes that you're always in

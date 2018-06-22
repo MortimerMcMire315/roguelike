@@ -19,7 +19,7 @@
  *  along with ROGUELIKETHING.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <character.h>
+#include "character.h"
 
 Character::Character() {
     corpse = NULL;
@@ -62,7 +62,7 @@ Character::Character(std::vector<int> _stats, int _x, int _y, Tile _sprite, Misc
     name = _name;
     master = NULL;
     master_health = 0;
-    
+
     //These won't do anything for anyone except the enemy, for now.  But,
     //they're here if we need them.
     level_up = 0;
@@ -115,7 +115,7 @@ Character::Character(const Character& chara)
         *inv = *chara.inventory[i];
         inventory.push_back(inv);
     }
-    
+
     //somewhat temporary
     sprite = chara.sprite;
     chunk = chara.chunk;
@@ -124,7 +124,7 @@ Character::Character(const Character& chara)
     ai_id = chara.ai_id;
     target = chara.target;
     conscious = chara.conscious;
-    master = chara.master; 
+    master = chara.master;
     master_health = chara.master_health;
     //These won't do anything for anyone except the enemy, for now.  But,
     //they're here if we need them.
@@ -143,7 +143,7 @@ Character& Character::operator=(const Character& chara)
     x = chara.x;
     y = chara.y;
     moral = chara.moral;
-    
+
     delete corpse;
     if(chara.corpse != NULL)
     {
@@ -183,7 +183,7 @@ Character& Character::operator=(const Character& chara)
         *inv = *chara.inventory[i];
         inventory[i] = inv;
     }
-    
+
     //somewhat temporary
     sprite = chara.sprite;
     chunk = chara.chunk;
@@ -192,8 +192,8 @@ Character& Character::operator=(const Character& chara)
     ai_id = chara.ai_id;
     target = chara.target;
     conscious = chara.conscious;
-    master = chara.master; 
-    master_health = chara.master_health; 
+    master = chara.master;
+    master_health = chara.master_health;
     //These won't do anything for anyone except the enemy, for now.  But,
     //they're here if we need them.
     direction = chara.direction;
@@ -242,11 +242,11 @@ void Character::take_damage(Weapon* weapon, int part_hit, int strength){
 
     //get the actual damage done
     int damage = body_reduction * ((base + strength) - (armor_reduction * (base + strength)));
-    
+
 
     //deal the damage
     current_stats[HEALTH] -= damage;
-    
+
     stringstream ss;
     ss<<"You were hit in the "<<BODY_PARTS[part_hit]<<" and have taken "<<damage<<" points of damage.";
     MessageBoard::instance().add_message(ss.str(), ai_id);
@@ -258,20 +258,20 @@ void Character::attack(Character* _chara)
 
     //did we hit?
     bool did_hit = (hit <= accuracy_stat());
-  
+
     //how solidly did we hit?
     float solid_hit = hit/accuracy_stat();
 
     //check if it was dodged
     bool did_dodge = _chara->did_dodge(solid_hit);
-    
+
     //get the body part hit
-    int part_hit = get_part_hit(rand() % 100); 
+    int part_hit = get_part_hit(rand() % 100);
 
     //did the other character block it?
     //we'll leave this out for now
     //bool blocked = chara->did_block(solid_hit, part_hit, get_weapon()->get_type());
-    
+
     //if we somehow managed to meet all of those conditions
     //then we should do the damage
     if(did_hit && !did_dodge)
@@ -607,7 +607,7 @@ bool Character::in_sight_range(IntPoint _coords, IntPoint _chunk)
 
     //get the distance.  sign matters
     IntPoint distance = point - center;
-    
+
     //flag to check if it's in the distance
     return (distance.row * distance.row) + (distance.col * distance.col) <= sight*sight;
 }
@@ -619,15 +619,15 @@ bool Character::in_sight(IntPoint _coords, IntPoint _chunk)
 
     //get the distance.  sign matters
     IntPoint distance = point - center;
-    
+
     //flag to check if it's in the distance
     bool in_distance = (distance.row * distance.row) + (distance.col * distance.col) <= sight*sight;
 
     //uses the direction the enemy is pointed and the width of the field of view
     //to establish the two angles that represent the upper and lower limits of what
     //the enemy can see
-    IntPoint view_field = get_fov(); 
-    
+    IntPoint view_field = get_fov();
+
     //convert them to radians
     double upper_bound = perc_to_rad(view_field.row);
     double lower_bound = perc_to_rad(view_field.col);
@@ -637,10 +637,10 @@ bool Character::in_sight(IntPoint _coords, IntPoint _chunk)
 
     //check if the target's angle is in the acceptable range
     bool in_arc = target_rads <= upper_bound && target_rads >= lower_bound;
-    
+
     //check to make sure there's not something in the way
-    
-    
+
+
     return in_arc && in_distance;
 }
 
@@ -841,7 +841,7 @@ bool Character::did_dodge(float hit)
 bool Character::did_block(int hit, int body_part, int type)
 {
     int block = get_armor_hit(body_part, type);
-    return block > 
+    return block >
 
 }
 **/

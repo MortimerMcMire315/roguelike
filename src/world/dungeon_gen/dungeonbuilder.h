@@ -24,8 +24,8 @@
 #define DUNGEONBUILDER_H
 
 
-#include <bitset>
-#include <ASCII_Lib.h>
+#include "bitset"
+#include "ASCII_Lib.h"
 
 //forward declarations
 class IntPoint;

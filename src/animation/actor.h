@@ -1,5 +1,5 @@
 /**
- *  @file ACTOR.H 
+ *  @file ACTOR.H
  *  @author Michael Yoder
  *
  *  @section LICENSE
@@ -35,7 +35,7 @@ class Actor
          * animation).
          */
         int x;
-        
+
         /**
          * The y coordinate of the actor (relative to the coords of the
          * animation).
@@ -47,7 +47,7 @@ class Actor
          * for implicit conversions.  Note: change this to an int.
          */
         char sprite;
-        
+
         /**
          * The color of the actor.  Whoa, that sounds a little racey.
          */
@@ -58,7 +58,7 @@ class Actor
          * Constructor for the actor.
          */
         Actor(int _x, int _y, char _sprite, Uint32 col);
-        
+
         /**
          * Basic accessors.
          */

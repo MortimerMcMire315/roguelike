@@ -19,8 +19,8 @@
  *  You should have received a copy of the GNU General Public License
  *  along with ROGUELIKETHING.  If not, see <http://www.gnu.org/licenses/>.
  */
-#include <chunk_layer.h>
-#include <tileset.h>
+#include "chunk_layer.h"
+#include "tileset.h"
 
 ChunkLayer::ChunkLayer() {
 

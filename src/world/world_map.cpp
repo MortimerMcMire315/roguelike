@@ -20,8 +20,9 @@
  *  along with ROGUELIKETHING.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <world_map.h>
 #include <sstream>
+
+#include "world_map.h"
 
 using namespace std;
 
@@ -78,7 +79,7 @@ int WorldMap::count_not_surrounding_tiles(int row, int col, MapTile tile_type)
 void WorldMap::starting_noise(int border) {
     for(int i = border; i < (height - border); i++) {
         for(int j = border; j < (width - border); j++) {
-            map[i][j] = random_weighted_tile(); 
+            map[i][j] = random_weighted_tile();
         }
     }
 }
@@ -104,7 +105,7 @@ void WorldMap::generate_land_mass() {
     starting_noise(border_size);
     for(int i=0;i<map_tile::NUM_WORLD_TILES;i++)
     {
-        MapTile tile = map_tile::WORLD_CONSTRUCTION_INDEX[i]; 
+        MapTile tile = map_tile::WORLD_CONSTRUCTION_INDEX[i];
         if(tile.smoothed)
         {
             for(int j = 0;j < 10; j++) {
@@ -166,11 +167,11 @@ void WorldMap::generate_beaches() {
             int num_beaches = count_in_surrounding_tiles(i, j, map_tile::MAP_BEACH);
             //get the non water tiles
             int num_land = count_not_surrounding_tiles(i, j, map_tile::MAP_WATER);
-            
+
             //we don't want beaches to count towards making another beach, there's already
             //one there.
             int countable_land = num_land - num_beaches;
-           
+
             if((map[i][j] == map_tile::MAP_WATER) && countable_land > 0 && countable_land < 6) {
                 map[i][j] = map_tile::MAP_BEACH;
             }
@@ -256,7 +257,7 @@ IntPoint WorldMap::get_seed(std::vector<std::vector<IntPoint> > city)
     //get our y coordinate
     int y_coord = rand() % city.size();
 
-    //if our y coordinate is on an edge, get any x on 
+    //if our y coordinate is on an edge, get any x on
     //those edges
     if(y_coord == 0 || y_coord == (city.size() - 1))
     {
@@ -264,10 +265,10 @@ IntPoint WorldMap::get_seed(std::vector<std::vector<IntPoint> > city)
        do {
            x_coord = rand() % city[y_coord].size();
        } while(city[y_coord][x_coord] == IntPoint(-1, -1));
-       
+
        return IntPoint(y_coord, x_coord);
     }
-    
+
     //if the y coordinate isn't on an edge
     //get an x that's on an edge
     int x_direction = rand() % 2 ? -1 : 1;
@@ -346,7 +347,7 @@ void WorldMap::random_flood(std::vector<std::vector<IntPoint> >& flood_map, MapT
         IntPoint mrmeseekstile = flood_map[cur_tile.row][cur_tile.col];
         //set the map tile to the tile that we want to use
         map[mrmeseekstile.row][mrmeseekstile.col] = tile;
-        
+
         for(int i=(cur_tile.row - 1);i<(cur_tile.row + 2);i++)
         {
             for(int j=(cur_tile.col - 1);j<(cur_tile.col + 2); j++)

@@ -20,8 +20,8 @@
  */
 
 #include "menu.h"
-#include <game.h>
-#include <defs.h>
+#include "game.h"
+#include "defs.h"
 
 EquipMenu::EquipMenu(int padding, Tile _border, Game* _game, int _item) : Menu(padding, _border)
 {

@@ -20,8 +20,8 @@
 #ifndef GAME_LOADER_H
 #define GAME_LOADER_H
 
-#include <game.h>
-#include <world_map_gui.h>
+#include "game.h"
+#include "world_map_gui.h"
 
 namespace game_loader {
     void init_loaded_game(Game &game, WorldMapGUI &world_map_gui, string filename);

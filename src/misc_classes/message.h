@@ -30,13 +30,13 @@
 class MessageBoard
 {
     public:
-        
+
         /**
          * Returns the single instance of the message board, or
          * creates one if it doesn't exist.
          */
         static MessageBoard& instance();
-        
+
         /**
          * Adds a message to the message queue at the appropriate place.
          * Takes in an id, and will only add the message if the id is
@@ -55,25 +55,25 @@ class MessageBoard
         std::string get_current_message();
 
         /**
-         * Gets a message at the given index. 
+         * Gets a message at the given index.
          * Indexing starts at 0 for the most recent
          * message (most recent is 0, next previous is
          * 1, etc.)
          */
         std::string get_message(int index);
-    
+
     private:
         /**
          * A vector containing the messages that have occcurred
          * to this point.
          */
         std::vector<std::string> messages;
-        
+
         /**
          * The maximum number of messages in the message queue.
          */
         int max_messages;
-        
+
         /**
          * The index of the most recent message.
          */
@@ -84,7 +84,7 @@ class MessageBoard
          * be called outside of the messageboard class.
          */
         MessageBoard();
-        
+
         /**
          * The copy constructor, made private to guarantee that
          * it can't be called.
@@ -96,8 +96,8 @@ class MessageBoard
          * The assignment operator, made private so that it can
          * never be called.
          */
-        MessageBoard& operator=(MessageBoard const&); 
-        
+        MessageBoard& operator=(MessageBoard const&);
+
         /**
          * The destructor, private so it can't be called.
          */

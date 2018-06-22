@@ -24,8 +24,9 @@
 #define TILE_LOAD_H
 
 #include <string.h>
-#include <tile.h>
 #include <unordered_map>
+
+#include "tile.h"
 
 namespace tile_load {
 

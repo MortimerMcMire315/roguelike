@@ -20,7 +20,7 @@
  *  along with ROGUELIKETHING.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <city_district.h>
+#include "city_district.h"
 
 CityDistrict::CityDistrict(int chunk_x, int chunk_y, int _height, int _width, MapTile _type)
 {
@@ -43,7 +43,7 @@ void CityDistrict::blocks_from_bst(BSpaceTree& tree)
 {
     std::vector<BSpaceNode*> leaves = tree.get_leaves();
     for(int i=0;i<leaves.size();i++)
-    {        
+    {
         int rand_x = rand() % 3 + 1;
         int rand_y = rand() % 3 + 1;
         int new_x = rand_x + leaves[i]->tl_x;

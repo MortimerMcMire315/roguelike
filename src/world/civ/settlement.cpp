@@ -20,7 +20,7 @@
  *  along with ROGUELIKETHING.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <settlement.h>
+#include "settlement.h"
 
 Settlement::Settlement(std::vector<<IntPoint> points)
 {
@@ -31,7 +31,7 @@ void Settlement::districts_from_intpoints(std::vector<IntPoint> points)
 {
     //sort the intpoints.  Note: this is padded!
     std::vector<std::vector<IntPoint> > sorted = sort_intpoints(points);
-    
+
     //make a place to hold our maptiles
     std::vector<std::vector<MapTile> > tiles;
     tiles.resize(sorted.size());
@@ -39,9 +39,9 @@ void Settlement::districts_from_intpoints(std::vector<IntPoint> points)
     {
         tiles[i].resize(sorted[i].size());
     }
-    
+
     int total = points.size();
-    
+
     //set everything to the first tile
     for(int i=0;i<sorted.size();i++)
     {

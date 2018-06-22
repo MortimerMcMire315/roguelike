@@ -20,8 +20,8 @@
  *  along with ROGUELIKETHING.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <tile_load.h>
-#include <tileset.h>
+#include "tile_load.h"
+#include "tileset.h"
 #include <iostream>
 
 std::unordered_map<std::string, Tile> Tileset::tileset = tile_load::load_conf();

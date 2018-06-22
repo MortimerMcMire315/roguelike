@@ -22,7 +22,7 @@
 
 #include <iostream>
 
-#include <utility.h>
+#include "utility.h"
 
 namespace conf_util {
     bool conf_exists(const char* conf_path) {

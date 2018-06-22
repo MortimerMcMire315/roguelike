@@ -34,7 +34,7 @@ namespace color_load {
      * @param value The value of the key that is being parsed
      * @return 0 for success, -1 for failure.
      */
-    static int handle_ini_entry(void* colordefs, const char* section, 
+    static int handle_ini_entry(void* colordefs, const char* section,
                                 const char* name, const char* value);
 
     /**

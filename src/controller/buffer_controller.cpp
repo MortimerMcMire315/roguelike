@@ -17,7 +17,7 @@
  *  along with ROGUELIKETHING.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <game.h>
+#include "game.h"
 
 /*
  * PRE: Takes an x and a y coordinate (chunk).
@@ -28,7 +28,7 @@
 bool Game::chunk_in_buffer(int row, int col) {
     IntPoint center = chunk_map.get_center();
     int offset = (chunk_map.get_diameter() - 1)/2;
-    IntPoint buffer_chunk = IntPoint(center.row - row + offset, center.col - col + offset); 
+    IntPoint buffer_chunk = IntPoint(center.row - row + offset, center.col - col + offset);
     return !chunk_map.out_of_bounds(buffer_chunk);
 }
 
@@ -144,7 +144,7 @@ void Game::show_chunk_objects() {
             if(chunk->get_depth()>main_char.get_depth()) {
                 spawners = chunk->get_spawners(main_char.get_depth());
                 items    = chunk->get_items(main_char.get_depth());
-                plants   = chunk->get_plants(main_char.get_depth()); 
+                plants   = chunk->get_plants(main_char.get_depth());
                 buildings = chunk->get_buildings(main_char.get_depth());
                 plants_to_buffer(plants, chunk_coords);
                 items_to_buffer(items, chunk_coords);

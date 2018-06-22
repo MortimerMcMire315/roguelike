@@ -20,8 +20,8 @@
 
 #ifndef MATH_HELPER_H
 #define MATH_HELPER_H
-#include <math.h>
-#include <int_point.h>
+#include "math.h"
+#include "int_point.h"
 
 const double PI = 3.1415926;
 

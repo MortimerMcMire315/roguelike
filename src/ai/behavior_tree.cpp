@@ -17,7 +17,7 @@
  *  along with ROGUELIKETHING.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <behavior_tree.h>
+#include "behavior_tree.h"
 
 BehaviorTree::BehaviorTree(BNode* node, Game* _game, int _id)
 {
@@ -34,7 +34,7 @@ BehaviorTree::BehaviorTree(const BehaviorTree& tree)
     actors = tree.actors;
     id = tree.id;
 }
-       
+
 BehaviorTree& BehaviorTree::operator=(const BehaviorTree& tree)
 {
     delete_all(root);
@@ -47,7 +47,7 @@ BehaviorTree& BehaviorTree::operator=(const BehaviorTree& tree)
 
 BNode* BehaviorTree::copy_tree(BNode* node)
 {
-    
+
     BNode* new_node = node->clone();
     std::vector<BNode*> nodes = node->get_children();
     for(int i=0;i<nodes.size();i++)

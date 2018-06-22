@@ -22,14 +22,14 @@
 
 #include <iostream>
 #include <boost/filesystem.hpp>
-
-#include <utility.h>
-#include <tile_load.h>
-#include <string.h>
-#include <ini.h>
-#include <conf_util.h>
-#include <color_load.h>
 #include <stdexcept>
+
+#include "utility.h"
+#include "tile_load.h"
+#include "string.h"
+#include "ini.h"
+#include "conf_util.h"
+#include "color_load.h"
 
 
 namespace fs=boost::filesystem;

@@ -1,7 +1,7 @@
 /**
  *  @file SPAWNER.CPP
  *  @author Michael Yoder
- * 
+ *
  *  @section LICENSE
  *  This file is part of ROGUELIKETHING.
  *
@@ -19,9 +19,9 @@
  *  along with ROGUELIKETHING.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <spawner.h>
-#include <tileset.h>
-#include <tile.h>
+#include "spawner.h"
+#include "tileset.h"
+#include "tile.h"
 
 #include <unordered_map>
 

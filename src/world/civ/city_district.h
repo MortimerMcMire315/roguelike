@@ -23,9 +23,9 @@
 #ifndef _CITY_DISTRICT_H
 #define _CITY_DISTRICT_H
 
-#include <int_point.h>
-#include <binary_space.h>
-#include <block.h>
+#include "int_point.h"
+#include "binary_space.h"
+#include "block.h"
 
 /**
  The class responsible for generating all of the buildings inside
@@ -35,7 +35,7 @@
 class CityDistrict
 {
     private:
-        
+
         /**
          * The chunk that the settlement's top left corner is in.  For now
          * the top left corner will just be at (0, 0) of the chunk.
@@ -44,7 +44,7 @@ class CityDistrict
 
         /**
          * The size of the city, in terms of number of tiles.  Will eventually
-         * be determined by the number of buildings, which is in turn 
+         * be determined by the number of buildings, which is in turn
          * determined by the number of people.  For now, I'll just assigned
          * it a size.
          */
@@ -105,8 +105,8 @@ class CityDistrict
          * This figure may answer to someone higher, but that's not
          * necessary to know for the purpose of generation.  This may
          * also be NULL, which indicates that the town is self-governing.
-         * The ruling figure helps to dictate the organization of the 
-         * town as well as the presence of a larger structure like a 
+         * The ruling figure helps to dictate the organization of the
+         * town as well as the presence of a larger structure like a
          * castle or palace.  The larger the settlement, the less likely
          * it is that it will be self governing.
          * \todo Implement this, as NPCs don't exist yet.
@@ -122,13 +122,13 @@ class CityDistrict
          */
          int agriculture;
 
-        /** 
+        /**
          * Whether or not the settlement is based in feudalism.
          * If the settlement is feudally based, then it is not truly
          * a town, village, or city.  Rather it has essentially become
          * a massive plantation where each tenant is given a plot of land
-         * where a large percentage of the food is taken from them.  It 
-         * will look like a series of farm plots with incredibly 
+         * where a large percentage of the food is taken from them.  It
+         * will look like a series of farm plots with incredibly
          * impoverished tenants.  Cities and towns were effectivley the
          * next step after feudalism, and as such the older the nation,
          * the fewer feudal settlements there will be.
@@ -141,7 +141,7 @@ class CityDistrict
          * civilization, the more planned cities there will be.  These
          * will almost always have a ruler, and will typically have less
          * of a center. Planned towns will also have more parallel streets.
-         * However, there will still be an element of chaos, more so the 
+         * However, there will still be an element of chaos, more so the
          * older the town is and the more developments which have been added.
          */
         bool planned;
@@ -159,7 +159,7 @@ class CityDistrict
          * The type of MapTile of this city.
          */
         MapTile type;
-    
+
     public:
         /**
          * The constructor for settlements.  As with buildings, I'm going to end
@@ -168,7 +168,7 @@ class CityDistrict
          * of the variables will not be used.
          */
         CityDistrict(int chunk_x, int chunk_y, int _height, int _width, MapTile _type);
-        
+
         /**
          * Makes a settlement out of a binary space partition.
          */

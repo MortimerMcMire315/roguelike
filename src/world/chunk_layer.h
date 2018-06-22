@@ -24,13 +24,13 @@
 #define CHUNK_LAYER
 
 #include <unordered_map>
-
-#include <defs.h>
-#include <spawner.h>
-#include <room.h>
 #include <vector>
-#include <plant.h>
-#include <building.h>
+
+#include "defs.h"
+#include "spawner.h"
+#include "room.h"
+#include "plant.h"
+#include "building.h"
 
 typedef std::vector<std::vector<Tile> > TileMatrix;
 class ChunkLayer {
@@ -38,7 +38,7 @@ class ChunkLayer {
     private:
         //is this really the place for this?  The answer is no. It's not.
         static const int MAX_ROOMS=15;
-        
+
         /**
          * Store a pointer to the global tileset.
          */
@@ -60,7 +60,7 @@ class ChunkLayer {
          * be a pointer.
          */
         std::vector<Plant> plants;
-        
+
         /**
          * The buildings present in the layer.
          */
@@ -205,7 +205,7 @@ class ChunkLayer {
          * on the tiles getting set properly.
          */
         std::vector<Plant>* get_plants();
-      
+
         /**
          * Gets a plant at the location. Returns NULL if there
          * is a plant.
@@ -266,7 +266,7 @@ class ChunkLayer {
          * Adds a building to the layer.
          */
         void add_building(Building building);
-        
+
         /**
          * Returns the buildings in the layer.
          */
@@ -289,13 +289,13 @@ class ChunkLayer {
          * Adds a character to the queue.
          */
         void add_character(Character* character);
-        
+
         /**
          * Runs all of the spawners (has them spawn things)
          * in the layer.
          */
         void run_spawners();
-        
+
         /**
          * Prints an ASCII representation of the layer to stdout.
          */

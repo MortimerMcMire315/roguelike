@@ -21,7 +21,8 @@
 
 #ifndef ROOM_H
 #define ROOM_H
-#include <int_point.h>
+
+#include "int_point.h"
 
 /**
  * A representation of a room in a dungeon. Used most often to place objects in
@@ -85,7 +86,7 @@ class Room
          */
         Room(IntPoint _tl, IntPoint _br);
         Room(int _tl_x, int _tl_y, int _height, int _width);
-    
+
 };
 
 #endif

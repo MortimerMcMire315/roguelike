@@ -19,7 +19,7 @@
  *  along with ROGUELIKETHING.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <actor.h>
+#include "actor.h"
 
 Actor::Actor(int _x, int _y, char _sprite, Uint32 col)
 {

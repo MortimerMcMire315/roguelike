@@ -21,7 +21,8 @@
 
 #ifndef _DEN_H
 #define _DEN_H
-#include <defs.h>
+
+#include "defs.h"
 
 typedef std::vector<std::vector<Tile> > TileMatrix;
 

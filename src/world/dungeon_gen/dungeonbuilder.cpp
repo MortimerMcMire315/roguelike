@@ -20,16 +20,17 @@
  *  along with ROGUELIKETHING.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <dungeonbuilder.h>
 #include <iostream>
 #include <string>
 #include <stdlib.h>
-#include <math.h> 
+#include <math.h>
 #include <assert.h>
-#include <room.h>
-#include <defs.h>
-#include <chunk_layer.h>
-#include <tileset.h>
+
+#include "room.h"
+#include "dungeonbuilder.h"
+#include "defs.h"
+#include "chunk_layer.h"
+#include "tileset.h"
 
 namespace dungeon_builder {
 

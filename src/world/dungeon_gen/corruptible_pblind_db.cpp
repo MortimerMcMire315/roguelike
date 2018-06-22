@@ -20,9 +20,9 @@
  *  along with ROGUELIKETHING.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <corruptible_pblind_db.h>
-#include <chunk_layer.h>
-#include <tileset.h>
+#include "corruptible_pblind_db.h"
+#include "chunk_layer.h"
+#include "tileset.h"
 
 using namespace std;
 namespace db=dungeon_builder;

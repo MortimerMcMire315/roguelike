@@ -17,7 +17,7 @@
  *  along with ROGUELIKETHING.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <game.h>
+#include "game.h"
 
 Item* Game::item_at_coords(IntPoint coords, IntPoint chunk, int depth) {
 

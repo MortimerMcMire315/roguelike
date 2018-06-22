@@ -21,8 +21,9 @@
 #define _BEHAVIOR_TREE_H
 
 #include <vector>
-#include <behavior_node.h>
-#include <behavior_actor.h>
+
+#include "behavior_node.h"
+#include "behavior_actor.h"
 
 /**
  * Oh boy, let's get started on behavior trees.
@@ -37,22 +38,22 @@ class BehaviorTree
          * The root node of the tree.
          */
         BNode* root;
-        
+
         /**
          * The game that this tree should use.
          */
         Game* game;
-        
+
         /**
          * The id of the tree.
          */
         int id;
-        
+
         /**
          * The actors in the tree.
          */
         std::vector<BActor> actors;
-   
+
         /**
          * Deletes the nodes in the tree.
          */
@@ -63,12 +64,12 @@ class BehaviorTree
          * The default constructor.
          */
         BehaviorTree(BNode* node, Game* _game, int _id);
-        
+
         /**
          * The copy constructor.
          */
         BehaviorTree(const BehaviorTree& tree);
-        
+
         /**
          * The assignment operator.
          */
@@ -78,22 +79,22 @@ class BehaviorTree
          * Deep copies the tree.
          */
         BNode* copy_tree(BNode* node);
-        
+
         /**
          * The destructor.
          */
         ~BehaviorTree();
-        
+
         /**
          * Adds an actor to the tree.
          */
         void add_actor(BActor actor);
-        
+
         /**
          * Runs all of the actors in the tree.
          */
         void run_actors(long delta_ms);
-        
+
         /**
          * Removes the actor with a particular character.
          */

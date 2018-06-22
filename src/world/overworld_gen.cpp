@@ -20,16 +20,16 @@
  *  along with ROGUELIKETHING.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <overworld_gen.h>
-#include <chunk_layer.h>
-#include <building.h>
-#include <city_district.h>
-#include <chunk.h>
-#include <block.h>
-#include <bresenham.h>
-#include <spawner.h>
-#include <int_point.h>
-#include <tileset.h>
+#include "overworld_gen.h"
+#include "chunk_layer.h"
+#include "building.h"
+#include "city_district.h"
+#include "chunk.h"
+#include "block.h"
+#include "bresenham.h"
+#include "spawner.h"
+#include "int_point.h"
+#include "tileset.h"
 
 namespace overworld_gen {
     bool smoothing_pass(int threshold, Tile tile_type, int num) {
@@ -108,7 +108,7 @@ namespace overworld_gen {
                 ground.set_tile(i,j,(*tileset)["DIRT"]);
             }
         }
-        
+
         //what does this do?
         IntPoint coords = IntPoint(0,0);
         do {
@@ -178,7 +178,7 @@ namespace overworld_gen {
         if(ground.has_layer_below) {
             ground.set_tile(down_stair, (*tileset)["DOWN_STAIR"]);
         }
-        
+
         for(int i=0;i<1;i++)
         {
             if(true)//rand() % 50 == 0)
@@ -195,12 +195,12 @@ namespace overworld_gen {
                 ground.spawners.push_back(Spawner(spawn_x, spawn_y, 0, rabbit));
             }
         }
-        
+
         /**************** TEST BUILDINGS, REMOVE FROM HERE TO END OF FUNC*********/
         /**
-        CityDistrict settlement = CityDistrict(0, 0, 400, 700); 
+        CityDistrict settlement = CityDistrict(0, 0, 400, 700);
         std::vector<Block> blocks = settlement.get_blocks();
-        
+
         for(int i=0;i<blocks.size();i++)
         {
             std::vector<Building> buildings = blocks[i].get_buildings();
@@ -242,7 +242,7 @@ namespace overworld_gen {
      *         Else:
      *             If a file for the chunk exists:
      *                 Do a partial load to get the heightmap (maybe put
-     *                 this at the beginning of the save file). Delete 
+     *                 this at the beginning of the save file). Delete
      *                 the pointer after chunk generation is finished.
      *             Else:
      *                 The pointer for its heightmap is NULL; we can do

@@ -17,7 +17,7 @@
  *  along with ROGUELIKETHING.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <world_map_gui.h>
+#include "world_map_gui.h"
 
 typedef std::vector<std::vector<MapTile> > MapTileMatrix;
 WorldMapGUI::WorldMapGUI() {
@@ -34,7 +34,7 @@ WorldMapGUI::WorldMapGUI() {
 }
 
 void WorldMapGUI::new_world() {
-    world_map = WorldMap(); 
+    world_map = WorldMap();
     refresh();
 }
 

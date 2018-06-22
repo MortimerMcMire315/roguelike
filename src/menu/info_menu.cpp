@@ -20,9 +20,9 @@
  */
 
 #include "menu.h"
-#include <item.h>
-#include <game.h>
-#include <defs.h>
+#include "item.h"
+#include "game.h"
+#include "defs.h"
 
 InfoMenu::InfoMenu(int padding, Tile _border, Game* _game, Item* _item) : Menu(padding, _border)
 {

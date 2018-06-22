@@ -20,9 +20,9 @@
  *  along with ROGUELIKETHING.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <procedurally_blind_db.h>
-#include <chunk_layer.h>
-#include <tileset.h>
+#include "procedurally_blind_db.h"
+#include "chunk_layer.h"
+#include "tileset.h"
 
 namespace db=dungeon_builder;
 
@@ -171,7 +171,7 @@ namespace pblind_db {
      * succeds, will return the IntPoint of the end of the path. If it fails, it
      * will return an IntPoint with row=-1 and col=-1.
      *
-     * TODO stop hard-coding this stuff 
+     * TODO stop hard-coding this stuff
      */
     IntPoint build_path(IntPoint start, int direction, db::dungeon_meta& dm)
     {

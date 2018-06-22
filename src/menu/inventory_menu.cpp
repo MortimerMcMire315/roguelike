@@ -20,9 +20,9 @@
  */
 
 #include "menu.h"
-#include <item.h>
-#include <game.h>
-#include <defs.h>
+#include "item.h"
+#include "game.h"
+#include "defs.h"
 
 InventoryMenu::InventoryMenu(int padding, Tile _border, Game* _game) : Menu(padding, _border)
 {
@@ -46,7 +46,7 @@ Menu* InventoryMenu::make_selection()
     }
     else
     {
-        return new ItemMenu(1, Tileset::get("BLOCK_WALL"), game, items->at(selection)); 
+        return new ItemMenu(1, Tileset::get("BLOCK_WALL"), game, items->at(selection));
     }
     return this;
 }

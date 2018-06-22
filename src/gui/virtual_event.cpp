@@ -17,7 +17,7 @@
  *  along with ROGUELIKETHING.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <virtual_event.h>
+#include "virtual_event.h"
 VirtualEvent::VirtualEvent() {
 }
 

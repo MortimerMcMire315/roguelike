@@ -22,15 +22,17 @@
 
 #ifndef _AI_DEFS_H
 #define _AI_DEFS_H
-#include <behavior_tree.h>
-#include <behavior_node.h>
-#include <behavior_actor.h>
-#include <game.h>
+
 #include <vector>
+
+#include "behavior_tree.h"
+#include "behavior_node.h"
+#include "behavior_actor.h"
+#include "game.h"
 
 namespace ai
 {
-    
+
     BNode* DeathNode();
     BehaviorTree GENERIC_AGGRESSIVE(Game* game);
     BehaviorTree GENERIC_PASSIVE(Game* game);

@@ -24,9 +24,9 @@
 #include <stdlib.h>
 #include <iostream>
 
-#include <constants.h>
-#include <world_map.h>
-#include <int_point.h>
+#include "constants.h"
+#include "world_map.h"
+#include "int_point.h"
 
 using namespace std;
 

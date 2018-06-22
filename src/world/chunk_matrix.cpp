@@ -1,4 +1,4 @@
-/** 
+/**
  *  @file CHUNK_MATRIX.CPP
  *  @author Seth Yoder
  *
@@ -19,9 +19,10 @@
  *  along with ROGUELIKETHING.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <chunk_matrix.h>
-#include <constants.h>
 #include <stdlib.h>
+
+#include "chunk_matrix.h"
+#include "constants.h"
 
 
 ChunkMatrix::ChunkMatrix() {

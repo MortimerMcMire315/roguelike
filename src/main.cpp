@@ -17,8 +17,9 @@
  *  along with ROGUELIKETHING.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <gui.h>
 #include <boost/filesystem.hpp>
+
+#include "gui.h"
 
 using namespace std;
 namespace fs=boost::filesystem;

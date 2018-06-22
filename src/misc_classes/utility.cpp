@@ -18,7 +18,7 @@
 */
 
 
-#include <utility.h>
+#include "utility.h"
 
 namespace utility {
 
@@ -171,7 +171,7 @@ namespace utility {
     {
         int c_row = 0 + (coords.row >= CHUNK_HEIGHT) - (coords.row < 0);
         int c_col = 0 + (coords.col >= CHUNK_WIDTH) - (coords.col < 0);
-        std::cout<<"New chunk: "<<IntPoint(c_row, c_col)<<std::endl; 
+        std::cout<<"New chunk: "<<IntPoint(c_row, c_col)<<std::endl;
         return IntPoint(c_row, c_col);
     }
 

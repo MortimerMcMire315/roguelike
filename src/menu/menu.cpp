@@ -18,7 +18,7 @@
  */
 
 #include "menu.h"
-#include <defs.h>
+#include "defs.h"
 
 
 

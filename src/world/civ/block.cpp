@@ -20,7 +20,7 @@
  *  along with ROGUELIKETHING.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <block.h>
+#include "block.h"
 
 Block::Block() {
 
@@ -45,9 +45,9 @@ void Block::generate_buildings()
 {
     //for now, statically sized houses.  We'll revisit this later
     BSpaceTree houses = BSpaceTree(width, height, 10, 14);
-    
+
     //just get the base leaves.
-    std::vector<BSpaceNode*> house_nodes = houses.get_leaves(); 
+    std::vector<BSpaceNode*> house_nodes = houses.get_leaves();
     for(int i=0;i<house_nodes.size();i++)
     {
         int rand_x = rand() % 2 + 1;

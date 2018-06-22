@@ -19,7 +19,7 @@
  *  along with ROGUELIKETHING.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <string_tree.h>
+#include "string_tree.h"
 
 StringTreeNode::StringTreeNode()
 {
@@ -33,7 +33,7 @@ StringTreeNode::StringTreeNode(std::string _statement, std::vector<StringTreeNod
 }
 
 std::string StringTreeNode::get_statement() {
-    return statement; 
+    return statement;
 }
 
 StringTreeNode* StringTreeNode::get_node(int index) {

@@ -24,7 +24,8 @@
 #define _SETTLEMENT_H
 
 #include <vector>
-#include <int_point.h>
+
+#include "int_point.h"
 
 /**
  * The class that holds settlements. This can be as small as a
@@ -34,16 +35,16 @@
  * for how the settlement gets broken up into districts, e.g.
  * market, residential, nobility, etc.
  *
- 
+
  * Big Cities = 12,000-100,000 people, rarely exceeding 50,000.
  * Cities = 8,000-12,000 people.
  * Towns = 1,000-8,000 people.
  * Villages = 20-1,000 people.
  * Isolated dwellings = >20 people.
- * These will be generated in order of size to fill the population of a nation.  
- * The more rural settlements will make up the majority of the population 
+ * These will be generated in order of size to fill the population of a nation.
+ * The more rural settlements will make up the majority of the population
  * (villages and isolated settlements), with ~3% of the population existing
- * in urbanized locations.  
+ * in urbanized locations.
  */
 class Settlement
 {
@@ -52,20 +53,20 @@ class Settlement
          * A list of the city_districts in the area.
          */
         std::vector<CityDistrict> districts;
-         
+
         /**
          * Generates types of city districts from a 2D vector
          * of IntPoints.
          */
-        void districts_from_intpoints(std::vector<IntPoint> points); 
-       
+        void districts_from_intpoints(std::vector<IntPoint> points);
+
     public:
         /**
          * The basic constructor.  Creates a list of City Districts
          * from a list of IntPoints.
          */
          Settlement(std::vector<<IntPoint> points);
-        
+
         /**
          * Accessor for the districts.
          */

@@ -20,12 +20,14 @@
 
 #ifndef HELPER_H
 #define HELPER_H
-#include <int_point.h>
+
 #include <vector>
 #include <boost/filesystem.hpp>
 #include <string.h>
-#include <constants.h>
 #include <sstream>
+
+#include "int_point.h"
+#include "constants.h"
 
 
 namespace fs=boost::filesystem;
@@ -126,7 +128,7 @@ namespace utility {
     /**
      * Takes in a set of coordinates and checks if they're out of
      * bounds of the chunk boundaries, rolls them over so that they're
-     * within the bounds.  
+     * within the bounds.
      * e.g. height of 51 gets converted to height of 1.
      */
     IntPoint normalize_coords(IntPoint coords);

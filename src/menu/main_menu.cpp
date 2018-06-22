@@ -20,8 +20,8 @@
  */
 
 #include "menu.h"
-#include <game.h>
-#include <defs.h>
+#include "game.h"
+#include "defs.h"
 
 MainMenu::MainMenu(int padding, Tile _border, Game* _game) : Menu(padding, _border)
 {

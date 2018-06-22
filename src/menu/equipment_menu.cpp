@@ -19,11 +19,12 @@
  *  along with ROGUELIKETHING.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "menu.h"
-#include <item.h>
-#include <game.h>
-#include <defs.h>
 #include <unordered_map>
+
+#include "menu.h"
+#include "item.h"
+#include "game.h"
+#include "defs.h"
 
 
 

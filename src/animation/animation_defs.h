@@ -22,10 +22,10 @@
 #ifndef __ANIMATION_DEF__H
 #define __ANIMATION_DEF__H
 
-#include <animation.h>
-#include <actor.h>
-#include <frame.h>
-#include <bresenham.h>
+#include "animation.h"
+#include "actor.h"
+#include "frame.h"
+#include "bresenham.h"
 
 /**
  * Makes an explosion animation!

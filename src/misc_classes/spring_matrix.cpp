@@ -1,5 +1,5 @@
 /**
- *  SPRING_MATRIX.H 
+ *  SPRING_MATRIX.H
  *
  *  This file is part of ROGUELIKETHING.
  *
@@ -17,7 +17,7 @@
  *  along with ROGUELIKETHING.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <spring_matrix.h>
+#include "spring_matrix.h"
 
 SpringPoint::SpringPoint(int _x, int _y, int _size)
 {
@@ -108,7 +108,7 @@ SpringMatrix::~SpringMatrix()
 void SpringMatrix::construct_matrix()
 {
     int space = (min + max)/2;
-    int space_per_point = space + point_size; 
+    int space_per_point = space + point_size;
     int y_size = (2 * padding) + space_per_point * points_per_side.row;
     int x_size = (2 * padding) + space_per_point * points_per_side.col;
     int point_num = 0;
@@ -151,7 +151,7 @@ void SpringMatrix::deform_matrix(int num_passes)
         {
             int x_dist = rand() % (max - min + 1) + min;
             IntPoint x_current = point->get_right_distance();
-            
+
             int x_dif = x_current.col - x_dist;
             int cur_change = x_dif/2;
             int right_change = (x_dif - cur_change) * - 1;
@@ -162,7 +162,7 @@ void SpringMatrix::deform_matrix(int num_passes)
         {
             int y_dist = rand() % (max - min + 1) + min;
             IntPoint y_current = point->get_bottom_distance();
-            
+
             int y_dif = y_current.row - y_dist;
             int cur_change = y_dif/2;
             int bottom_change = (y_dif - cur_change) * - 1;

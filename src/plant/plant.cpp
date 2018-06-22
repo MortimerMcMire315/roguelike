@@ -19,7 +19,7 @@
  *  along with ROGUELIKETHING.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <plant.h>
+#include "plant.h"
 /**
 Plant::Plant(int _x, int _y, Tile _sprite)
 {

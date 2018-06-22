@@ -19,8 +19,9 @@
  *  along with ROGUELIKETHING.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <room.h>
 #include <iostream>
+
+#include "room.h"
 
 Room::Room() {
 

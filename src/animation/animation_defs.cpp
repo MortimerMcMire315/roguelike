@@ -19,7 +19,7 @@
  *  along with ROGUELIKETHING.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <animation_defs.h>
+#include "animation_defs.h"
 
 Animation construct_explosion(int x, int y, int chunk_x, int chunk_y, int size, Uint32 color)
 {
@@ -27,7 +27,7 @@ Animation construct_explosion(int x, int y, int chunk_x, int chunk_y, int size, 
     //iterate through the frames.
     for(int i=0;i<size;i++)
     {
-        
+
         //make a circle with the same radius as the frame number (frame 3 has a radius of 3)
         IntPoint start = IntPoint(0, 0);
         std::vector<IntPoint> points = bresenham_circle(start, i);
@@ -38,7 +38,7 @@ Animation construct_explosion(int x, int y, int chunk_x, int chunk_y, int size, 
             anim.add_actor_to_frame(a, i);
         }
     }
-    
+
     return anim;
 }
 

@@ -17,7 +17,7 @@
  *  along with ROGUELIKETHING.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <game.h>
+#include "game.h"
 
 void Game::run_spawners() {
     std::vector<Spawner>* spawners;

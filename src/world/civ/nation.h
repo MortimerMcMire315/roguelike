@@ -56,7 +56,7 @@ class Nation
          */
         int population;
 
-        /** 
+        /**
          * A list of the cities within the nation.
          * This list should be subject to change as the nation grows/shrinks,
          * and as individual cities are destroyed or created.  This will not
@@ -66,7 +66,7 @@ class Nation
 
     public:
 
-        /** 
+        /**
          * The default constructor.  Does nothing.
          */
         Nation();
@@ -77,8 +77,8 @@ class Nation
          * This is then divided up in to cities, towns, villages, and isolated dwellings
          * based on numbers found in Medieval Cities by Norman Pounds, as well as John S.
          * Ross's Medieval Demographics made easy.  NPC's will then be generated for these
-         * settlements, although it is likely that these will not be the only NPC's which 
-         * exist.  Only cities and towns will be added to the city list. 
+         * settlements, although it is likely that these will not be the only NPC's which
+         * exist.  Only cities and towns will be added to the city list.
          * All others will be generated but exist independently of the list.
          *
          * Population = (rand(.8, 1.0)) * (density * size))
@@ -87,5 +87,5 @@ class Nation
          */
 
          Nation(int _density, int _land_mass);
-         
 
+}

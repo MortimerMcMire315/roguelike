@@ -17,7 +17,7 @@
  *  along with ROGUELIKETHING.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <int_point.h>
+#include "int_point.h"
 
 IntPoint::IntPoint() {
 }

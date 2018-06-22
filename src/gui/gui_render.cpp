@@ -17,9 +17,9 @@
  *  along with ROGUELIKETHING.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <gui.h>
-#include <animation.h>
-#include <menu.h>
+#include "gui.h"
+#include "animation.h"
+#include "menu.h"
 
 void GUI::OnRender() {
     if(current_screen == MENU_SCREEN) {
@@ -86,7 +86,7 @@ void GUI::render_canvas()
                 //If the tile is visible, render it fully.
                 if(tm[i][j]->visible) {
                     drawChr(j, i, tm[i][j]->char_count, ascii, screen, tm[i][j]->color);
-                
+
                 //If the tile is not visible, but has been seen, render it in
                 //grey.
                 } else if(tm[i][j]->seen) {
@@ -128,17 +128,17 @@ void GUI::render_main_char() {
 void GUI::render_interface() {
     Character* target = game.main_char.get_target();
     int height = 0;
-    
+
     drawStr(UI_START, height, std::string("Main Character").c_str(), ascii, screen, WHITE);
 
     height = render_stats(&game.main_char, height + 1);
     height ++;
-    
+
     drawStr(UI_START, height, std::string("Target").c_str(), ascii, screen, WHITE);
-     
+
     //Render the current target
     if(target != NULL)
-    {       
+    {
         height = render_stats(target, height + 1);
     }
     else
@@ -148,7 +148,7 @@ void GUI::render_interface() {
 
     //Render that you have a level!
     if(game.main_char.get_new_levels() > 0)
-    { 
+    {
         drawStr(UI_START, SCREEN_HEIGHT - 1, std::string("Level up!").c_str(), ascii, screen, RED);
     }
 }
@@ -179,13 +179,13 @@ void GUI::render_menu(Menu* menu)
     int start_col = (GAME_WIDTH - width) / 2;
     int end_row = (GAME_HEIGHT + height) / 2;
     int end_col = (GAME_WIDTH + width) / 2;
- 
+
     int extra_row = start_row - menu->padding;
     int extra_end_row = start_row + menu->num_extra_lines() + menu->padding;
-    int extra_width = utility::get_max_width(menu->get_extra_lines()) + menu->padding; 
+    int extra_width = utility::get_max_width(menu->get_extra_lines()) + menu->padding;
     int extra_col = (GAME_WIDTH - extra_width)/2;
     int extra_end_col = (GAME_WIDTH + extra_width)/2;
-    
+
     if(menu->num_extra_lines() != 0)
     {
         start_row = start_row + menu->num_extra_lines() + 2;
@@ -208,7 +208,7 @@ void GUI::render_menu(Menu* menu)
         }
     }
 
-    //draw a box around the extra lines 
+    //draw a box around the extra lines
 
     int starting_col;
     starting_col = (GAME_WIDTH - menu->title.size()) / 2;
@@ -216,8 +216,8 @@ void GUI::render_menu(Menu* menu)
     //draw the title
     drawStr(starting_col, (GAME_HEIGHT/4), menu->title.c_str(),
             ascii, screen, RED);
-    
-    
+
+
     int color, string_size;
 
     //draw the extra lines
@@ -241,7 +241,7 @@ void GUI::render_menu(Menu* menu)
         {
             option = " " + option;
         }
-        
+
         string_size = option.size();
         starting_col = (GAME_WIDTH - string_size) / 2;
         if(menu->selection == i) {
@@ -257,13 +257,13 @@ void GUI::render_menu(Menu* menu)
 }
 
 void GUI::render_target()
-{    
+{
     TilePointerMatrix tm = game.get_canvas();
     if(game.main_char.get_target() != NULL)
     {
         Character* chara = game.main_char.get_target();
         IntPoint temp_chunk = chara->get_chunk();
-        
+
         std::vector<IntPoint> sight = chara->sight_tiles();
         for(int i=0;i<sight.size();i++)
         {

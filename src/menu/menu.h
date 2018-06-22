@@ -25,15 +25,12 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include <ASCII_Lib.h>
-#include <defs.h>
-#include <game_states.h>
-//#include <item.h>
-//#include <game.h>
-//#include <world_map_gui.h>
-#include <game_loader.h>
-//#include <character.h>
-#include <utility.h>
+
+#include "ASCII_Lib.h"
+#include "defs.h"
+#include "game_states.h"
+#include "game_loader.h"
+#include "utility.h"
 
 //forward declarations
 class Item;
@@ -63,7 +60,7 @@ namespace menu_id {
 
 /**
  * The basis of the menuing system for the roguelike.
- * Each different type of menu is going to be a subclass that overloads the make_selection() function 
+ * Each different type of menu is going to be a subclass that overloads the make_selection() function
  * to provide different functionality.  See the documentation for make_selection for more detail.
  */
 class Menu {
@@ -83,74 +80,74 @@ class Menu {
          * with the MENU_SCREEN.
          */
         Screen next_screen;
-        
+
         /**
          * The menu item which is currently selected (corresponds to an index in options).
          */
         int selection;
-        
+
         /**
          * The title of the menu.
          */
         string title;
-        
+
         /**
          * The tile which is used as a background for the menu.
          * It occurs to me that this is actually a background, now a border.
          * \todo Make this an actual border.
          */
         Tile border;
-        
+
         /**
          * The possible options which can be chosen for the menu.
          */
         vector<string> options;
-        
-        
+
+
         /**
          * Whether or not the menu screen should be closed.
          * This exits out of the entire menuing system, not just one menu.
          */
-        bool exit; 
-        
+        bool exit;
+
         /**
          * Checks whether or not a selection is out of the bounds of the menu.
          * @param row The number to check.
          * @return True if the option is larger than the size of the list or smaller than 0.
          */
         bool out_of_bounds(int row);
-        
+
         /**
          * A numerical id for the menu.
          * Each type of menu has a different id.
          */
         int id;
-        
+
         /**
          * The constructor for the menu.
          * @param _padding Sets the padding for the menu.
          * @param _border Sets the border for the menu.
          */
         Menu(int _padding, Tile _border, int _selection = 0);
-        
+
         /**
          * Changes the currently selected menu option.
          * @param direction Always +/- 1, determines whether the selection goes up or down.
          */
         void move_selection(int direction);
-        
+
         /**
          * The distance between the menu text and the edge of the menu area.
          */
-        int padding; 
-        
+        int padding;
+
         /**
          * Anything extra to be displayed in a menu.
          * This is pertinent if more information needs to be given by a menu (
          * as in the case of the InfoMenu).
          */
         vector<string> extra_lines;
-        
+
         /**
          * The function that handles when a selection is made in the menu.
          * This is the most important function.  There are four possibilities:
@@ -158,45 +155,45 @@ class Menu {
          *     be the new menu.
          * 2.  The selection just performs a function and then returns to the same menu.
          *     In this case, "this" will be returned and nothing else will happen.
-         * 3.  The selection causes an exit of the menu screen.  When this happens, 
+         * 3.  The selection causes an exit of the menu screen.  When this happens,
          *     "this" will be returned and should_exit will be toggled. On the next pass,
          *     the game_state will then transition to the next_screen.
          * 4.  The function returns NULL, in which case the game is exited.
          * There's no reason that 2 & 3 can't be combined.
         */
         virtual Menu* make_selection() = 0;
-        
+
         /**
          * Adds an item to the options.
          * @param new_item Item to add to the menu.
          */
         void add_item(string new_item);
-        
+
         /**
          * PUblic accessor for exit.
          */
         bool should_exit();
-        
+
         /**
          * Public accessor for selection.
          */
         int get_selection();
-        
+
         /**
          * Flips the variable exit.
          */
         void toggle_exit();
-        
+
         /**
          * Returns the screen to switch to upon exit.
          */
         Screen get_screen();
-        
+
         /**
          * Public accessor for the id.
          */
         int get_id();
-        
+
         /**
          * Public accessor for number of extra_lines.
          */
@@ -258,18 +255,18 @@ class MainMenu: public Menu
 
         MainMenu(int _padding, Tile _border, Game* _game);
         Menu* make_selection();
-        
+
 
 };
 
 /**
  * The menu which lists all of the equipment that the player is (or isn't) wearing.
- * Upon selection, this menu will bring up and EquipMenu with the selected item, 
+ * Upon selection, this menu will bring up and EquipMenu with the selected item,
  * allowing players to interact with it.
  */
 class EquipmentMenu: public Menu
 {
-    public: 
+    public:
         /**
          * Constructor for the Equipment Menu.
          * @param _padding Sets the padding for the menu.
@@ -278,7 +275,7 @@ class EquipmentMenu: public Menu
          */
         EquipmentMenu(int _padding, Tile _border, Game* _game);
         Menu* make_selection();
-        
+
 
 };
 
@@ -295,7 +292,7 @@ class InventoryMenu: public Menu
          */
         vector<Item*>* items;
     public:
-        /* 
+        /*
          * Constructor for the Inventory Menu.
          * @param _padding Sets the padding for the menu.
          * @param _border Sets the border for the menu.
@@ -303,7 +300,7 @@ class InventoryMenu: public Menu
          */
         InventoryMenu(int _padding, Tile _border, Game* _game);
         Menu* make_selection();
-        
+
 };
 
 /**
@@ -318,7 +315,7 @@ class ItemMenu: public Menu
          */
         Item* item;
     public:
-        /* 
+        /*
          * Constructor for the Item Menu.
          * @param _padding Sets the padding for the menu.
          * @param _border Sets the border for the menu.
@@ -327,7 +324,7 @@ class ItemMenu: public Menu
          */
         ItemMenu(int _padding, Tile _border, Game* _game, Item* _item);
         Menu* make_selection();
-        
+
 };
 
 /**
@@ -342,7 +339,7 @@ class EquipMenu: public Menu
          */
         int item;
     public:
-        /* 
+        /*
          * Constructor for the Equip Menu.
          * @param _padding Sets the padding for the menu.
          * @param _border Sets the border for the menu.
@@ -351,7 +348,7 @@ class EquipMenu: public Menu
          */
         EquipMenu(int _padding, Tile _border, Game* _game, int _item);
         Menu* make_selection();
-        
+
 };
 
 /**
@@ -360,7 +357,7 @@ class EquipMenu: public Menu
 class EscapeMenu: public Menu
 {
     public:
-        /* 
+        /*
          * Constructor for the Escape Menu.
          * @param _padding Sets the padding for the menu.
          * @param _border Sets the border for the menu.
@@ -368,7 +365,7 @@ class EscapeMenu: public Menu
          */
         EscapeMenu(int _padding, Tile _border, Game* _game);
         Menu* make_selection();
-        
+
 };
 
 /**
@@ -379,7 +376,7 @@ class EscapeMenu: public Menu
 class AudioMenu: public Menu
 {
     public:
-        /* 
+        /*
          * Constructor for the Audio Menu.
          * @param _padding Sets the padding for the menu.
          * @param _border Sets the border for the menu.
@@ -387,7 +384,7 @@ class AudioMenu: public Menu
          */
         AudioMenu(int _padding, Tile _border, Game* _game);
         Menu* make_selection();
-        
+
 };
 
 /**
@@ -412,7 +409,7 @@ class FontMenu: public Menu
          */
         string font;
     public:
-        /* 
+        /*
          * Constructor for the Font Menu.
          * @param _padding Sets the padding for the menu.
          * @param _border Sets the border for the menu.
@@ -420,7 +417,7 @@ class FontMenu: public Menu
          */
         FontMenu(int _padding, Tile _border, Game* _game);
         Menu* make_selection();
-        
+
         /**
          * Public accessor for the font.
          */
@@ -428,7 +425,7 @@ class FontMenu: public Menu
 };
 
 /**
- * The menu which brings up information about an item. 
+ * The menu which brings up information about an item.
  * It's...it's not any more complicated than that.  You can make your own puzzles.
  */
 class InfoMenu: public Menu
@@ -439,7 +436,7 @@ class InfoMenu: public Menu
          */
         Item* item;
     public:
-        /* 
+        /*
          * Constructor for the Info Menu.
          * @param _padding Sets the padding for the menu.
          * @param _border Sets the border for the menu.
@@ -457,7 +454,7 @@ class LevelMenu: public Menu
 {
     protected:
     public:
-        /* 
+        /*
          * Constructor for the Level Menu.
          * @param _padding Sets the padding for the menu.
          * @param _border Sets the border for the menu.
@@ -482,7 +479,7 @@ class MessageMenu: public Menu
          */
         int per_page;
     public:
-        /* 
+        /*
          * Constructor for the Level Menu.
          * @param _padding Sets the padding for the menu.
          * @param _border Sets the border for the menu.

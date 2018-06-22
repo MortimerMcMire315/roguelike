@@ -17,7 +17,7 @@
  *  along with ROGUELIKETHING.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <game.h>
+#include "game.h"
 
 void Game::spawn_enemy(int chunk_x, int chunk_y, int x, int y, int depth, int type) {
         Enemy* temp = new Enemy(x, y, depth, ENEMY_LIST[type]);

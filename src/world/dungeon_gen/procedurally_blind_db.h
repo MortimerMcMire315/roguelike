@@ -23,7 +23,7 @@
 #ifndef _PROCEDURALLY_BLIND_DUNGEONBUILDER_H
 #define _PROCEDURALLY_BLIND_DUNGEONBUILDER_H
 
-#include <dungeonbuilder.h>
+#include "dungeonbuilder.h"
 
 namespace db=dungeon_builder;
 

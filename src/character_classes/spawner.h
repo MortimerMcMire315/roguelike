@@ -22,11 +22,12 @@
 #ifndef _SPAWNER_H
 #define _SPAWNER_H
 
-#include <enemy.h>
 #include <ctime>
 #include <iostream>
-#include <defs.h>
-#include <den.h>
+
+#include "enemy.h"
+#include "defs.h"
+#include "den.h"
 
 /**
  * A class responsible for creating enemies.

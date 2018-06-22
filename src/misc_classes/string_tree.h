@@ -25,18 +25,19 @@
 #include <string>
 #include <stdlib.h>
 #include <vector>
-#include <character.h>
-#include <game.h>
+
+#include "character.h"
+#include "game.h"
 
 /**
  * A generic interface that stores a string
  * in a tree structure.  Is used for dialogue, and documentation
- * will operate under this assumption. 
+ * will operate under this assumption.
  * At some point, this could (and probably will be) abstrated out
  * to only have one string at each level--each node will represent
  * possible responses by either party.
  */
-class StringTreeNode 
+class StringTreeNode
 {
     public:
         /**
@@ -60,8 +61,8 @@ class StringTreeNode
          * to make sure it exists.
          */
         void do_callback(Character* main, Character* second, Game* game);
-        
-        
+
+
     private:
         /**
          * The initial statement made by a character.

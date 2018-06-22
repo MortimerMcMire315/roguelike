@@ -21,9 +21,10 @@
 #define _BEHAVIOR_NODE_H
 
 #include <vector>
-#include <game.h>
-#include <behavior_actor.h>
 #include <assert.h>
+
+#include "game.h"
+#include "behavior_actor.h"
 
 class BActor;
 
@@ -46,14 +47,14 @@ class BNode
          */
         std::vector<BNode*> nodes;
     public:
-        
+
         void add_child(BNode* node, int index);
-        
+
         /**
          * Public accessor for the children nodes.
          */
         std::vector<BNode*> get_children();
-        
+
         /**
          * Ticks the node forward once.
          * TODO MAKE THIS VIRTUAL AGAIN
@@ -95,7 +96,7 @@ class PriorityNode : public BNode
 /**
  * A class to emulate if/else statements, which is dangerous territory
  * as it could become overrused.  The problem now, however, is that if
- * you want a condition to execute one of two behaviors depending on 
+ * you want a condition to execute one of two behaviors depending on
  * success or failure, you have to put a priority with the two behaviors
  * you want, and then put the condition at the beginning of the first node,
  * so that if it fails you move to the second.  However, if the node
@@ -156,7 +157,7 @@ class Attack : public BNode
         int tick(BActor actor, Game* game);
         Attack* clone();
 };
-        
+
 class Wander : public BNode
 {
     public:

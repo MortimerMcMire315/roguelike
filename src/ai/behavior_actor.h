@@ -20,14 +20,14 @@
 #ifndef _BEHAVIOR_ACTOR_H
 #define _BEHAVIOR_ACTOR_H
 
-#include <character.h>
-#include <behavior_node.h>
+#include "character.h"
+#include "behavior_node.h"
 
 class BNode;
 
 /**
  * The actor class for behavior trees.  Holds information about a character
- * and that character's place in the tree. 
+ * and that character's place in the tree.
  */
 class BActor
 {
@@ -39,23 +39,23 @@ class BActor
 
        /**
         * Someday, perhaps, when I thread things, this will do something.
-        * For the nonce, it is a placeholder.  
+        * For the nonce, it is a placeholder.
         */
        BNode* running_node;
-    
+
     public:
-        
+
         /**
          * The empty constructor.
          */
         BActor();
-        
+
         /**
          * The default constructor.
          */
         BActor(Character* _chara);
-        
-       
+
+
        /**
         * Accessor for the actor.
         */

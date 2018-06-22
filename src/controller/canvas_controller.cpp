@@ -17,7 +17,7 @@
  *  along with ROGUELIKETHING.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <game.h>
+#include "game.h"
 
 void Game::point_assertions(int row, int col) {
     assert(row >= 0);

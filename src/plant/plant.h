@@ -22,9 +22,9 @@
 #ifndef _PLANT_H
 #define _PLANT_H
 
-#include <defs.h>
-#include <item.h>
-#include <int_point.h>
+#include "defs.h"
+#include "item.h"
+#include "int_point.h"
 
 /**
  * The class which is used for plants, so that plants can grow and
@@ -40,12 +40,12 @@ class Plant
          * X coordinate of the plant.
          */
         int x;
-        
+
         /**
          * Y coordinate of the plant.
          */
         int y;
-        
+
         /**
          * The x coordinate of the chunk of the plant.
          */
@@ -60,31 +60,31 @@ class Plant
          * The name of the plant.
          */
         std::string name;
-        
+
         /**
         * The character representing the plant.
          * TODO: Make this a 2d vector so that plants
          * can be as biiiiig as we want them to be.
          */
         TileMatrix sprites;
-    
+
         /**
          * The category of tools/equipment that can harvest the plant.
          */
         int harvest_tool;
-        
+
         /**
          * The possible items that the plant can drop.
          */
         std::vector<Misc*> drops;
 
     public:
-        
+
         /**
          * Basic constructor.
          */
         //Plant(int _x, int _y, Tile _sprite);
-        
+
         /**
          * Constructor taking in a plant type.
          */
@@ -94,32 +94,32 @@ class Plant
          * Empty constructor.
          */
         Plant();
-        
+
         /**
          * Destructor to delete the drops.
          */
         ~Plant();
-        
+
         /**
          * Copy constructor for the plant.
          */
         Plant(const Plant& p);
-        
+
        /**
         * Assignment operator for the plant.
         */
         Plant& operator=(const Plant& p);
-        
+
         /**
          * Public accessor for the x coordinate.
          */
         int get_x();
-        
+
         /**
          * Public accessor for the y coordinate.
          */
         int get_y();
-       
+
         /**
          * Public accessor for the x coordinate of the chunk.
          */
@@ -154,16 +154,16 @@ class Plant
          * Pass in a tilematrix to use as the sprites for this plant.
          */
         void set_sprites(TileMatrix tm);
-        
+
         int get_harvest_tool();
-        
+
         /**
          * Returns the drops without removing them.
          */
         std::vector<Misc*> get_drops();
-        
+
         /**
-         * Returns  the drops and removes them from 
+         * Returns  the drops and removes them from
          * the plant.
          */
         std::vector<Misc*> pop_drops();
@@ -175,7 +175,7 @@ class Plant
 
         void set_x(int _x);
         void set_y(int _y);
-        
+
         /**
          * Checks if the coords overlap with the plants coords.
          */

@@ -17,7 +17,7 @@
  *  along with ROGUELIKETHING.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <binary_space.h>
+#include "binary_space.h"
 
 
 /****************** NODES ***************************/
@@ -25,8 +25,8 @@ BSpaceNode::BSpaceNode(int _tl_x, int _tl_y, int _width, int _height)
 {
     tl_x = _tl_x;
     tl_y = _tl_y;
-    height = _height; 
-    width = _width; 
+    height = _height;
+    width = _width;
     left = NULL;
     right = NULL;
 }
@@ -101,7 +101,7 @@ bool BSpaceTree::split_node(BSpaceNode* node)
 
     //check which direction we're splitting.
     //if the height and width are similar, pick one randomly.
-    bool splitH = rand() % 2; 
+    bool splitH = rand() % 2;
     if((float)node->height/(float)node->width < .5 || (node->height<max_size && node->width>max_size))
     {
         splitH = false;
@@ -111,15 +111,15 @@ bool BSpaceTree::split_node(BSpaceNode* node)
         splitH = true;
     }
     //check to see if we have enough space to split
-    int max = (splitH ? node->height : node->width) - min_size; 
+    int max = (splitH ? node->height : node->width) - min_size;
     if(max <= min_size)
     {
         return false;
     }
-    
+
     //get a space to split on
-    int split = rand() % (max - min_size) + min_size; 
-    
+    int split = rand() % (max - min_size) + min_size;
+
     //split the node
     if(splitH)
     {
@@ -139,7 +139,7 @@ std::vector<BSpaceNode*>& BSpaceTree::get_leaves()
     rec_get_leaves(leaves, root);
     return leaves;
 }
-    
+
 void BSpaceTree::rec_get_leaves(std::vector<BSpaceNode*>& vec, BSpaceNode* node)
 {
     if(node->left == NULL && node->right == NULL)
@@ -183,8 +183,8 @@ std::string BSpaceTree::print_tree(BSpaceNode* node, int accum)
         return ss.str() +  print_tree(node->left, accum + 1) + print_tree(node->right, accum + 1);
     }
 }
-        
-        
+
+
 
 
 BSpaceNode* BSpaceTree::get_root()

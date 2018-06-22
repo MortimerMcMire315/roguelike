@@ -1,7 +1,7 @@
 /**
  *  @file ENEMY.CPP
  *  @author Michael Yoder
- *  
+ *
  *  @section LICENSE
  *  This file is part of ROGUELIKETHING.
  *
@@ -19,7 +19,7 @@
  *  along with ROGUELIKETHING.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <enemy.h>
+#include "enemy.h"
 
 using namespace std;
 Enemy::Enemy()
@@ -41,7 +41,7 @@ Enemy::Enemy(int _x, int _y, int _depth, EnemyType enemy) : Character(_x, _y, _d
     direction = 0;
     speed = enemy.speed;
     sprite = enemy.sprite;
-    corpse = new Misc(IntPoint(x, y), enemy.corpse); 
+    corpse = new Misc(IntPoint(x, y), enemy.corpse);
     natural_weapon = Weapon(IntPoint(y, x), enemy.natural_weapon);
 
     //generate the enemy's list of equipment and weapons

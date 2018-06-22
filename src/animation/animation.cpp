@@ -19,7 +19,7 @@
  *  along with ROGUELIKETHING.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <animation.h>
+#include "animation.h"
 
 Animation::Animation(std::vector<Frame> _frames, int frame_rate, int _x, int _y, int _chunk_x, int _chunk_y)
 {

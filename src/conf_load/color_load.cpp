@@ -23,12 +23,11 @@
 #include <iostream>
 #include <boost/filesystem.hpp>
 
-#include <utility.h>
-#include <color_load.h>
-#include <conf_util.h>
-#include <string.h>
-#include <ini.h>
-
+#include "utility.h"
+#include "color_load.h"
+#include "conf_util.h"
+#include "string.h"
+#include "ini.h"
 
 namespace fs=boost::filesystem;
 
@@ -36,7 +35,7 @@ namespace color_load {
 
     static int handle_ini_entry(void* colordefs, const char* section, const char* name, const char* value) {
         //Cast the void pointer to an unordered map
-        std::unordered_map<string, int>* colormap = 
+        std::unordered_map<string, int>* colormap =
                 (std::unordered_map<string, int>*) colordefs;
 
         int colorval;
@@ -59,7 +58,7 @@ namespace color_load {
             if (ini_parse(colorini.string().c_str(), handle_ini_entry, &colormap) < 0) {
                 exit(EXIT_FAILURE);
             }
-            
+
         } else {
             exit(EXIT_FAILURE);
         }

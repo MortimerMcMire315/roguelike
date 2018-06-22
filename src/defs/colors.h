@@ -1,6 +1,7 @@
-/**
- *  @file AUDIO_MENU.CPP
- *  @author Michael Yoder
+/*
+ *  @file COLORS.H
+ *  @author Michael Yoder, Seth Yoder
+ *
  *
  *  @section LICENSE
  *  This file is part of ROGUELIKETHING.
@@ -18,22 +19,3 @@
  *  You should have received a copy of the GNU General Public License
  *  along with ROGUELIKETHING.  If not, see <http://www.gnu.org/licenses/>.
  */
-
-#include "menu.h"
-#include "game.h"
-#include "defs.h"
-
-AudioMenu::AudioMenu(int padding, Tile _border, Game* _game) : Menu(padding, _border)
-{
-    id = menu_id::AUDIO_MENU;
-    game = _game;
-    next_screen = GAME_SCREEN;
-    title = "Silly, there's no audio yet.  Maybe Seth can compose something later...";
-    options.push_back("Back");
-}
-
-Menu* AudioMenu::make_selection()
-{
-
-    return new EscapeMenu(1, Tileset::get("BLOCK_WALL"), game);
-}

@@ -41,16 +41,16 @@ class BSpaceNode
         BSpaceNode* right;
         BSpaceNode(int _tl_x, int _tl_y, int _width, int _height);
         void resize(int new_x, int new_y, int new_width, int new_height);
- 
+
 };
 
 /**
- * The class for constructing binary space trees, used to randomly 
+ * The class for constructing binary space trees, used to randomly
  * divide a space into similar sized rectangles.
  */
 class BSpaceTree
 {
-    private: 
+    private:
         BSpaceNode* root;
         std::vector<BSpaceNode*> leaves;
         int height;
@@ -67,8 +67,8 @@ class BSpaceTree
         BSpaceNode* get_root();
         std::vector<BSpaceNode*>& get_leaves();
         void rec_get_leaves(std::vector<BSpaceNode*>& vec, BSpaceNode* node);
-        void dump_all(); 
+        void dump_all();
 
-};    
+};
 
 #endif

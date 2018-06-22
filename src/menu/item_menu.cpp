@@ -20,9 +20,9 @@
  */
 
 #include "menu.h"
-#include <item.h>
-#include <game.h>
-#include <defs.h>
+#include "item.h"
+#include "game.h"
+#include "defs.h"
 
 
 ItemMenu::ItemMenu(int padding, Tile _border, Game* _game, Item* _item) : Menu(padding, _border)
@@ -57,7 +57,7 @@ Menu* ItemMenu::make_selection()
         //use the item...not entirely sure what this will look like.
     }
     else if(options[selection] == "Equip")
-    { 
+    {
         game->main_char.equip_item(item);
     }
     else if(options[selection] == "Consume")

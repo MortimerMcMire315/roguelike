@@ -21,9 +21,10 @@
 #define _PATHFINDING_H
 
 #include <vector>
-#include <int_point.h>
-#include <defs.h>
 #include <cmath>
+
+#include "int_point.h"
+#include "defs.h"
 
 namespace pathfinding
 {
@@ -163,7 +164,7 @@ namespace pathfinding
      * @return The index of the smallest f value found in the list.
      */
     int get_smallest_f(std::vector<ATile>& list);
-        
+
     /**
      * Gets the direction that an enemy should be spooked.
      * Takes in a chunk and coordinates in the direction of the spooker,
@@ -175,7 +176,7 @@ namespace pathfinding
      */
     IntPoint get_opposite(IntPoint abs_coords, IntPoint target_abs);
 
-    
+
     /**
      * A debugging function.
      * Dumps the paths to cout as they are calculated by a-star.  Only

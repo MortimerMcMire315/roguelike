@@ -20,9 +20,9 @@
  */
 
 #include "menu.h"
-#include <game.h>
-#include <defs.h>
-#include <sstream>
+#include "game.h"
+#include "defs.h"
+#include "sstream"
 
 LevelMenu::LevelMenu(int padding, Tile _border, Game* _game) : Menu(padding, _border)
 {
@@ -43,7 +43,7 @@ LevelMenu::LevelMenu(int padding, Tile _border, Game* _game) : Menu(padding, _bo
 Menu* LevelMenu::make_selection()
 {
     int stat;
-    if(options[selection] == "Return") 
+    if(options[selection] == "Return")
     {
         return new MainMenu(padding, border, game);
     }
@@ -66,6 +66,6 @@ Menu* LevelMenu::make_selection()
     return new LevelMenu(padding, border, game);
 }
 
-    
-    
+
+
 

@@ -17,7 +17,7 @@
  *  along with ROGUELIKETHING.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <bresenham.h>
+#include "bresenham.h"
 
 /*
  * A Bresenham's line algorithm for plotting lines in discrete space.
@@ -64,7 +64,7 @@ std::vector<IntPoint> bresenham_line(IntPoint& first, IntPoint& second) {
             //NOTE: This is like saying IntPoint(col, row)
             current_point = IntPoint(x, y);
         } else {
-            current_point = IntPoint(y, x); 
+            current_point = IntPoint(y, x);
         }
 
         points.push_back(current_point);
@@ -117,11 +117,11 @@ std::vector<IntPoint> bresenham_circle(IntPoint& start, int radius) {
 
 std::vector<IntPoint> bresenham_arc(IntPoint& start, int radius, IntPoint bounds)
 {
-    
+
     //establish the bounds
     double upper_bounds = perc_to_rad(bounds.row);
     double lower_bounds = perc_to_rad(bounds.col);
-    
+
     //draw a circle
     std::vector<IntPoint> points = std::vector<IntPoint>();
     std::vector<IntPoint> temp_points = std::vector<IntPoint>();
@@ -133,7 +133,7 @@ std::vector<IntPoint> bresenham_arc(IntPoint& start, int radius, IntPoint bounds
     int radius_error = 1 - x;
 
     while(x >= y) {
-        
+
 
         temp_points.push_back(IntPoint(x + x0, y + y0));
         temp_points.push_back(IntPoint(y + x0, x + y0));

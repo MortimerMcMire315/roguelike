@@ -25,12 +25,14 @@
 
 #ifndef DEFS_H
 #define DEFS_H
-#include <color_def.h>
 #include <string>
 #include <ctime>
 #include <stdlib.h>
 #include <vector>
-#include <tile.h>
+
+#include "tile.h"
+#include "color_def.h"
+
 #define DEBUG 1
 //Why is this a define?
 #define SAVE_DIR DATADIR "/save"
@@ -435,7 +437,7 @@ struct WeaponType
      * True if the item has a use beyond changing attack.
      */
     bool use;
-    
+
     /**
      * The size of the item.
      */
@@ -445,7 +447,7 @@ struct WeaponType
      * The category the item belongs to.
      */
     int category;
-    
+
     /**
      * Comparitor operator for weapon.
      */

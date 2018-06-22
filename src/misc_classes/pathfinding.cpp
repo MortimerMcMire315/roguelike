@@ -17,12 +17,12 @@
  *  along with ROGUELIKETHING.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <pathfinding.h>
+#include "pathfinding.h"
 
 //TODO clean this up and optimize it at some point.
 IntPoint pathfinding::get_next_step(IntPoint goal, TilePointerMatrix& surroundings, IntPoint cur_coords, int sight)
 {
-    
+
     return dumb_path(goal, surroundings, cur_coords);
     /**
     std::vector<IntPoint> path = a_star(cur_coords, goal, surroundings, sight);
@@ -42,7 +42,7 @@ IntPoint pathfinding::get_next_step(IntPoint goal, TilePointerMatrix& surroundin
 
 IntPoint pathfinding::dumb_path(IntPoint goal, TilePointerMatrix& surroundings, IntPoint cur_coords)
 {
-    int y = 0 + (goal.row > cur_coords.row) - (goal.row < cur_coords.row); 
+    int y = 0 + (goal.row > cur_coords.row) - (goal.row < cur_coords.row);
     int x = 0 + (goal.col > cur_coords.col) - (goal.col < cur_coords.col);
     IntPoint next = IntPoint(y, x);
     IntPoint first_fail = IntPoint(0, 0);
@@ -78,7 +78,7 @@ std::vector<IntPoint> pathfinding::a_star(IntPoint start, IntPoint goal, TilePoi
      * on the open list to point to.  Each tile's parent is
      * an int which corresponds to an index value for any tile
      * which has at some point been the "current tile"
-     */ 
+     */
      std::vector<ATile> current_list;
 
     //The first tile is added to the open list
@@ -112,7 +112,7 @@ std::vector<IntPoint> pathfinding::a_star(IntPoint start, IntPoint goal, TilePoi
                 {
                     //check if this point is on the open list
                     int open_index = is_in(IntPoint(i, j), open);
-                    
+
                     int y_move = (i-start.row) >= 0 ? (i-start.row) : ((i-start.row) * -1);
                     int x_move = (j-start.col) >= 0 ? (j-start.col) : ((j-start.col) * -1);
                     bool in_range = y_move <= sight && x_move <= sight;
@@ -121,21 +121,21 @@ std::vector<IntPoint> pathfinding::a_star(IntPoint start, IntPoint goal, TilePoi
                     if(in_range && is_good && surroundings[i][j]->can_be_moved_through && open_index == -1 && is_in(IntPoint(i, j), closed) == -1)
                     {
                         ATile temp = ATile(cur_index, IntPoint(i, j));
-                        temp.g = current_list[cur_index].g + (14 * ((i - current_list[cur_index].coords.row != 0) && 
-                            (j - current_list[cur_index].coords.col != 0))) + (10 * ((i - 
+                        temp.g = current_list[cur_index].g + (14 * ((i - current_list[cur_index].coords.row != 0) &&
+                            (j - current_list[cur_index].coords.col != 0))) + (10 * ((i -
                             current_list[cur_index].coords.row == 0) || (j - current_list[cur_index].coords.col == 0)));
 
                         temp.h = manhattan(IntPoint(i, j), goal);
                         temp.f = temp.h + temp.g;
                         open.push_back(temp);
-                        
+
                     }
                     //check if it can be moved through, is on the open list, and isn't on the closed list
                     else if(surroundings[i][j]->can_be_moved_through && open_index != -1 && is_in(IntPoint(i, j), closed) == -1)
                     {
                         //recalculate g to give a new f
-                        int new_g = current_list[cur_index].g + (14 * ((i - current_list[cur_index].coords.row != 0) && 
-                            (j - current_list[cur_index].coords.col != 0))) + (10 * ((i - 
+                        int new_g = current_list[cur_index].g + (14 * ((i - current_list[cur_index].coords.row != 0) &&
+                            (j - current_list[cur_index].coords.col != 0))) + (10 * ((i -
                             current_list[cur_index].coords.row == 0) || (j - current_list[cur_index].coords.col == 0)));
 
                         //if the new g is lower, replace the old parent

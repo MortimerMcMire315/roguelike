@@ -17,7 +17,7 @@
  *  along with ROGUELIKETHING.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <gui.h>
+#include "gui.h"
 
 namespace pt = boost::posix_time;
 namespace gregorian = boost::gregorian;

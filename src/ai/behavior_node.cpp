@@ -17,7 +17,7 @@
  *  along with ROGUELIKETHING.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <behavior_node.h>
+#include "behavior_node.h"
 
 //---------------------------COMPOSITE NODES-----------------------//
 
@@ -341,7 +341,7 @@ Attack* Attack::clone()
 int Wander::tick(BActor actor, Game* game)
 {
     Character* chara = actor.get_character();
-    game->wander(chara); 
+    game->wander(chara);
     return RUNNING;
 }
 
@@ -354,7 +354,7 @@ Wander* Wander::clone()
 int FreakOut::tick(BActor actor, Game* game)
 {
     Character* chara = actor.get_character();
-    game->wander(chara); 
+    game->wander(chara);
     return RUNNING;
 }
 

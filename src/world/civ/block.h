@@ -23,8 +23,8 @@
 #ifndef _BLOCK_H
 #define _BLOCK_H
 
-#include <int_point.h>
-#include <building.h>
+#include "int_point.h"
+#include "building.h"
 
 class Block
 {
@@ -67,12 +67,12 @@ class Block
          * Creates a new Block.
          */
         Block(int _tl_x, int _tl_y, int _height, int _width);
-    
+
         /**
          * Generates houses inside of the block.
          */
         void generate_buildings();
-        
+
         /**
          * Accessor for buildings.
          */

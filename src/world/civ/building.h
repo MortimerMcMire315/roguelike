@@ -23,18 +23,19 @@
 #ifndef _BUILDING_H
 #define _BUILDING_H
 
-#include <binary_space.h>
-#include <room.h>
+#include "binary_space.h"
+#include "room.h"
+#include "defs.h"
+#include "character.h"
+
 #include <stdlib.h>
-#include <defs.h>
-#include <character.h>
 
 typedef std::vector<std::vector<Tile> > TileMatrix;
 typedef std::vector<std::vector<Tile*> > TilePointerMatrix;
 
 /**
  * The class which is responsible for making buildings.
- */ 
+ */
 class Building
 {
     private:
@@ -62,7 +63,7 @@ class Building
         /**
          * Changes the way that the house is constructed.
          * Corresponds to an enum.  Really just a way so that
-         * I can say "if(plan == PARALLEL){..." instead of 
+         * I can say "if(plan == PARALLEL){..." instead of
          * needing to keep track of indexes.
          */
         //plan floor_plan;
@@ -71,7 +72,7 @@ class Building
          * The shape of the buildling.
          * Will be a circular or rectangular.  Almost all houses will
          * be circles.
-         * Again, corresponds to an enum to access instead of 
+         * Again, corresponds to an enum to access instead of
          * index values.
          */
         //shape building_shape;
@@ -94,13 +95,13 @@ class Building
         /**
          * Holds the tiles of the house.
          */
-        TileMatrix floor_plan; 
-        
+        TileMatrix floor_plan;
+
         /**
          * The Character which owns the house.
          */
         Character* owner;
-        
+
         /**
          * Generates the rooms and floor plan from a Binary Space Tree
          * generated in the height and width of the house.
@@ -119,7 +120,7 @@ class Building
          * Maps the rooms into a floor plan.
          */
         void rooms_to_floor();
-        
+
         /**
          * Recursively adds doors in between every left-right pair of nodes.
          */
@@ -148,7 +149,7 @@ class Building
 
         /**
          * Constructor for buildings that actually builds the building.
-         * At the moment, this does very little as I need to think of 
+         * At the moment, this does very little as I need to think of
          * a good way to incorporate all of the variables that I need.
          * Basically, it's going to make a square house with several
          * rooms and a door.
@@ -159,22 +160,22 @@ class Building
          * \todo Once seth figures out the whole depth thing, add a number of floors
          */
         Building(int x, int y, int _height, int _width);
-        
+
         /**
          * Accessor for the floor tile.
          */
         Tile get_floor();
-        
+
         /**
          * Accessor for the wall tile.
          */
         Tile get_wall();
-        
+
         /**
          * Accessor for the floor plan.
          */
         TileMatrix& get_floor_plan();
- 
+
         /**
          * Accessor for the x coordinate.
          */
@@ -189,7 +190,7 @@ class Building
          * Accessor for the width.
          */
         int get_width();
-        
+
         /**
          * Accessor for the height.
          */
@@ -204,7 +205,7 @@ class Building
          * Returns a pointer to the tile at x and y.
          */
         Tile* tile_pointer_at(int y, int x);
-        
+
         /**
          * Makes a Character an owner of a house.
          */

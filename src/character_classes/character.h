@@ -21,19 +21,21 @@
 
 #ifndef CHARACTER_H
 #define CHARACTER_H
+
 #include <SDL/SDL.h>
-#include <defs.h>
-#include <ASCII_Lib.h>
-#include <color_def.h>
 #include <iostream>
-#include <int_point.h>
-#include <item.h>
 #include <vector>
 #include <cstring>
-#include <utility.h>
 #include <math_helper.h>
-#include <bresenham.h>
-#include <message.h>
+
+#include "defs.h"
+#include "ASCII_Lib.h"
+#include "color_def.h"
+#include "int_point.h"
+#include "item.h"
+#include "utility.h"
+#include "bresenham.h"
+#include "message.h"
 
 /**
  * A class which is used to construct all characters in game.
@@ -137,7 +139,7 @@ class Character
 
         /**
          * The "master" of the character, which corresponds to a character who is in control
-         * of this one. I should probably also add a list of "slaves" (yikes) so that the 
+         * of this one. I should probably also add a list of "slaves" (yikes) so that the
          * relationship is two ways, and it would also allow for controlling of the different
          * characters.
          */
@@ -165,7 +167,7 @@ class Character
          * @see timer
          */
         int speed;
-        
+
         /**
          * Member variable to hold how far the enemy can see.
          */
@@ -182,7 +184,7 @@ class Character
          * This is a percentage of the field of view (1-100).
          */
         int view;
-        
+
         /**
          * The id of the behavior tree that is responsible for controlling this
          * enemy.
@@ -194,13 +196,13 @@ class Character
          * be distributed.
          */
         int level_up;
-        
+
         /**
          * A string of the name of the enemy.
          * This is a generic string, as in "kobold," or "rabbit."
          */
         std::string name;
-        
+
         /**
          * Gets the experience required to get to the next level.
          * Goes up by the square of the level.
@@ -218,7 +220,7 @@ class Character
          * The default constructor.
          */
         Character();
-        
+
         /**
          * The destructor.
          */
@@ -261,14 +263,14 @@ class Character
          * @param _depth The depth in the chunk to place the charcter.
          */
         Character(int _x, int _y, int _depth);
-        
+
 
         /**
          * Run the actions that happen to the character every frame.  Returns whether
          * or not enough time had passed to complete the action.
          */
         bool act(long ms);
-        
+
         /**
          * A check to see whether or not the character is alive.
          * @returns True if the character's current health is > 0, otherwise false.
@@ -294,12 +296,12 @@ class Character
          * @see stats
          */
         void attack(Character* _chara);
-        
+
         /**
          * Checks to see if a character dodged an attack.
          */
         bool did_dodge(float hit);
-        
+
         /**
          * Public access function for the character's inventory.
          * @return The character's inventory.
@@ -331,7 +333,7 @@ class Character
          * @return A list of coords the enemy can see.
          */
         std::vector<IntPoint> sight_tiles();
-        
+
         /**
          * Add an item to the character's inventory.
          * @param new_item The item to place in the character's inventory.
@@ -414,7 +416,7 @@ class Character
          * @return IntPoint containing y, x.
          */
         IntPoint get_coords();
-        
+
         /**
          * Public accessor for the chunk coordinates.
          * @return Member variable chunk.
@@ -499,7 +501,7 @@ class Character
          * Gets the damage reduction of the armor.
          */
         float get_armor_dam(int body_part, int type);
-        
+
         /**
          * Public setter for the x coordinate.
          * @param _x New x coordinate.
@@ -573,7 +575,7 @@ class Character
          * @see current_stats
          */
         void set_stat(int stat, int amount);
-        
+
          /**
          * Public getter for accessing a stat value.
          * @param stat The index value of the stat to access.
@@ -581,7 +583,7 @@ class Character
          * @see current_stats
          */
        int get_current_stat(int);
-        
+
         /**
          * Public setter for setting a stat value.
          * @param stat The index value of the stat to set.
@@ -623,7 +625,7 @@ class Character
         /**
          * Checks to see if a point is within the enemy's range of sight.
          * Looks at a point/chunk to see if it it's within the enemies
-         * range of vision.  
+         * range of vision.
          * @parameter _coords The coordinates of the target.
          * @parameter _chunk The chunk of the target.
          * @return True if the coords/chunk can be seen.
@@ -641,7 +643,7 @@ class Character
          * @return True if the coords/chunk can be seen.
          */
         bool in_sight(IntPoint _coords, IntPoint _chunk);
-        
+
         /**
          * Turns the enemy to face towards the coords given.
          * @parameter coords The difference between the target coords and current coords.
@@ -659,12 +661,12 @@ class Character
          * @return An IntPoint containing the upper and lower bounds o the fov as angles.
          */
          IntPoint get_fov();
-        
+
         /*
          * Public accessor for the ai id.
          */
         int get_ai_id();
-        
+
         /**
          * Causes experience to increase as a proportion of the level
          * passed into the function.
@@ -682,7 +684,7 @@ class Character
          * character has.
          */
         void level_stat(int stat);
-       
+
         /**
          * Checks to see if the character has an item in its inventory
          * or equipment which belongs to the passed in category.
@@ -693,14 +695,14 @@ class Character
          * Public accessor for the name of the character.
          */
         std::string get_name();
-        
+
         //------------------DERIVED STATS-------------------//
         /**
          * The characters ability to dodge.  This is derived from
          * the stat "Dexterity."
          */
         float dodge_stat();
-       
+
         /**
          * The character's accuracy, representing the percentage
          * of how often a character hits something.
@@ -733,7 +735,7 @@ class Character
          * is different than the last known master's health.
          */
         bool master_health_changed();
-        
+
         /**
          * Kills the character.
          */

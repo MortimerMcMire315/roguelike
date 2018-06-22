@@ -17,7 +17,7 @@
  *  along with ROGUELIKETHING.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <game.h>
+#include "game.h"
 
 /**
  * This controller is to access character data and control characters.
@@ -89,11 +89,11 @@ void Game::remove_targets(Character* enem)
 }
 
 
-bool Game::find_target(Character* chara){ 
+bool Game::find_target(Character* chara){
     //establish the necessary variables
     //the character is 'passive'
     Character* best = NULL;
-    std::vector<Character*> characters = characters_in_range(chara); 
+    std::vector<Character*> characters = characters_in_range(chara);
     if(chara->get_moral() == 3)
     {
         best = passive_target(chara, characters);
@@ -225,8 +225,8 @@ void Game::wander(Character* chara)
     int will_move = rand() % 5;
     int x_change = rand() % 3 - 1;
     int y_change = rand() % 3 - 1;
-    IntPoint new_coords = IntPoint(chara->get_y() + y_change, chara->get_x() + x_change); 
-    
+    IntPoint new_coords = IntPoint(chara->get_y() + y_change, chara->get_x() + x_change);
+
     int turn_amount = rand() % 20 - 10;
     if(will_move == 0)
     {
@@ -333,7 +333,7 @@ bool Game::move_char(int col_change, int row_change, Character* chara) {
     next_col = next_col +  (CHUNK_WIDTH * (next_col<0)) - (CHUNK_WIDTH * (next_col>=CHUNK_WIDTH));
     next_row = next_row +  (CHUNK_HEIGHT * (next_row<0)) - (CHUNK_HEIGHT * (next_row>=CHUNK_HEIGHT));
     IntPoint next_coords = IntPoint(next_row, next_col);
-    
+
     Character* enem = character_at_loc(new_chunk, next_coords);
 
     IntPoint buffer_coords = get_buffer_coords(new_chunk, IntPoint(next_row, next_col));
@@ -458,7 +458,7 @@ void Game::harvest_plant(Plant *plant, Character* chara)
         {
             message = "You don't have the tool to do that!";
         }
-        
+
         MessageBoard::instance().add_message(message, chara->get_ai_id());
     }
 }

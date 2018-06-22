@@ -19,7 +19,7 @@
  *  along with ROGUELIKETHING.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <frame.h>
+#include "frame.h"
 
 Frame::Frame(std::vector<Actor> _actors)
 {

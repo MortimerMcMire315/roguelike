@@ -17,11 +17,11 @@
  *  along with ROGUELIKETHING.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <message.h>
+#include "message.h"
 
 MessageBoard& MessageBoard::instance()
 {
-    static MessageBoard mb_instance; 
+    static MessageBoard mb_instance;
     return mb_instance;
 }
 

@@ -1,5 +1,5 @@
 /**
- *  SPRING_MATRIX.H 
+ *  SPRING_MATRIX.H
  *
  *  This file is part of ROGUELIKETHING.
  *
@@ -21,10 +21,11 @@
 #ifndef _SPRING_MATRIX_H
 #define _SPRING_MATRIX_H
 
-#include <int_point.h>
 #include <vector>
 #include <stdlib.h>
 #include <iostream>
+
+#include "int_point.h"
 
 /**
  * Creates spring points.
@@ -37,12 +38,12 @@ class SpringPoint
          * The X coordinate.
          */
         int x;
-        
+
         /**
          * The Y coordinate.
          */
         int y;
-        
+
         /**
          * The size of the point.
          */
@@ -57,29 +58,29 @@ class SpringPoint
          * The point below.
          */
         SpringPoint* bottom;
-    
+
     public:
-        
+
         /**
          * The basic constructor.
          */
         SpringPoint(int _x, int _y, int _size);
-        
+
         /**
          * Sets the point to the right.
          */
         void add_right_point(SpringPoint* point);
-        
+
         /**
          * Sets the point below.
          */
         void add_bottom_point(SpringPoint* point);
-        
+
         /**
          * Returns the distance between this point and another point.
          */
         IntPoint get_distance(SpringPoint* point);
-        
+
         /**
          * Gets the distance between this point and the one to the right.
          */
@@ -89,7 +90,7 @@ class SpringPoint
          * Gets the distance between this point and the one below it.
          */
         IntPoint get_bottom_distance();
-        
+
         /**
          * Moves the point by an offset.
          */
@@ -99,7 +100,7 @@ class SpringPoint
          * Accessor for the x coordinate.
          */
         int get_x();
-        
+
         /**
          * Accessor for the y coordinate.
          */
@@ -117,7 +118,7 @@ class SpringPoint
 
 
 };
-        
+
 
 /**
  * The class for a spring matrix.  A spring matrix is a thing that probably
@@ -134,7 +135,7 @@ class SpringMatrix
          * The list of points in the matrix.  Maybe should be a 2d vector...?
          */
         std::vector<SpringPoint*> points;
-        
+
         /**
          * The number of points that can fit on a side.
          */
@@ -165,12 +166,12 @@ class SpringMatrix
          * Basic constructor.
          */
         SpringMatrix(IntPoint num_points, int _point_size, int _min, int _max, int _padding);
-        
+
         /**
          * Basic destructor.
          */
         ~SpringMatrix();
-        
+
         /**
          * Creates the matrix with the paramaters above.
          */
@@ -181,7 +182,7 @@ class SpringMatrix
          * Pretty unnecessary for small matrices.
          */
         void deform_matrix(int num_passes);
-        
+
         /**
          * Accessor for the matrix.
          */

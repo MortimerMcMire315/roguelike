@@ -21,14 +21,14 @@
  */
 
 #include <iostream>
-#include <procedurally_blind_db.h>
-#include <corruptible_pblind_db.h>
-#include <overworld_gen.h>
-#include <spawner.h>
-#include <plant.h>
-#include <tileset.h>
 
-#include <chunk.h>
+#include "procedurally_blind_db.h"
+#include "corruptible_pblind_db.h"
+#include "overworld_gen.h"
+#include "spawner.h"
+#include "plant.h"
+#include "tileset.h"
+#include "chunk.h"
 
 Chunk::Chunk() {
     cm.height = CHUNK_HEIGHT;
@@ -102,7 +102,7 @@ bool Chunk::build_chunk_with_dungeons() {
 
     layers = std::vector<ChunkLayer>(cm.depth, ChunkLayer(cm.width, cm.height));
     //CorruptiblePBlindDB db(cm.width, cm.height);
-    
+
     layers[0].has_layer_below = (cm.depth > 1);
 
     bool has_layer_below;
@@ -125,7 +125,7 @@ void Chunk::build_land_chunk() {
 void Chunk::build_forest_chunk() {
     build_chunk_with_dungeons();
     overworld_gen::build_forest_overworld(layers[0]);
-    
+
     //TODO: probably rename this
     build_some_dank_trees();
 }
@@ -151,7 +151,7 @@ void Chunk::build_city_chunk() {
     int height = layers[0].height;
     int width = layers[0].width;
     overworld_gen::build_city_overworld(layers[0]);
-    CityDistrict settlement = CityDistrict(0, 0, height, width, map_tile::CITY); 
+    CityDistrict settlement = CityDistrict(0, 0, height, width, map_tile::CITY);
     std::vector<Block> blocks = settlement.get_blocks();
 
     for(int i=0;i<blocks.size();i++)
@@ -164,7 +164,7 @@ void Chunk::build_city_chunk() {
             Enemy* chara = new Enemy(builds[j].get_x() + 1, builds[j].get_y() + 1, 0, enemies::human);
             layers[0].add_character(chara);
             builds[j].add_owner(chara);
-            
+
             int cob_x = rand() % 2 + 1;
             int cob_y = rand() % 2 + 1;
 
@@ -191,10 +191,10 @@ void Chunk::build_some_dank_trees()
     int dist_between_trees = (min+max)/2;
     int padding = 0;
     int tree_size = 2;
-    
+
     int x_trees = (cm.width - padding * 2)/(dist_between_trees + tree_size) + 1;
     int y_trees = (cm.height - padding * 2)/(dist_between_trees + tree_size) + 1;
-    
+
     IntPoint trees_per_side = IntPoint(y_trees, x_trees);
     SpringMatrix mat = SpringMatrix(trees_per_side, tree_size, min, max, padding);
 
@@ -221,16 +221,16 @@ bool Chunk::can_build(int depth, int x, int y)
         return false;
     }
     bool can_build = layers[depth].get_tile(y, x).can_build_overtop;
-    
+
     //lols checkout this line count tradeoff: the above line versus the rest of
     //this function. Keeping this here so i can brag about it -SAY 12/21/2014
 
-    //Actually...this won't work.  The spawners aren't in the ground anymore. 
+    //Actually...this won't work.  The spawners aren't in the ground anymore.
     //Plus, the spawners aren't a single tile, they're a matrix, so we don't want it
     //building in the middle.  Also plus, this doesn't do what I was going to add next,
     //which was check whether or not the x and y are even in the tile matrix.
     //-MJY 12/21/2014 (slightly later)
-    
+
     //Is it in a spawner?
     bool in_spawner = false;
     std::vector<Spawner>* spawners = get_spawners(depth);
@@ -241,7 +241,7 @@ bool Chunk::can_build(int depth, int x, int y)
             in_spawner = true;
         }
     }
-    
+
     return  can_build && !in_spawner;
 }
 
@@ -354,9 +354,9 @@ int Chunk::pack_int_into_char_array(int num, char* file, int index) {
 int Chunk::char_array_to_int(char* file, int& the_index) {
     int index = the_index;
 
-    int num = (((unsigned char) file[index]) << 24) | 
-              (((unsigned char) file[index+1]) << 16) | 
-              (((unsigned char) file[index+2]) << 8) | 
+    int num = (((unsigned char) file[index]) << 24) |
+              (((unsigned char) file[index+1]) << 16) |
+              (((unsigned char) file[index+2]) << 8) |
               ((unsigned char) file[index+3]);
     assert(num >= 0);
 
@@ -381,7 +381,7 @@ int Chunk::calculate_file_size(int bytes_per_tile) {
         for(int j = 0; j < layers[i].get_plants()->size(); j++) {
             bytes_per_layer += 4;
             Plant* current_plant = &(*(layers[i].get_plants()))[j];
-            
+
             for(int k = 0; k < current_plant->get_sprites()->size(); k++) {
                 for(int l = 0; l < (*(current_plant->get_sprites()))[k].size(); l++) {
                     bytes_per_layer += 2;
@@ -594,7 +594,7 @@ int Chunk::deserialize_layer_metadata(char file_data[], int cb) {
 
         current_byte = deserialize_plants(file_data, i, current_byte, num_plants);
         //cout<<"DESERIALIZING: Chunk "<<cm.world_row<<", "<<cm.world_col<<", "<<i<<" : "<<current_byte<<endl;
-        
+
 
         for(int j = 0; j < num_spawners; j++) {
             spawner_row = file_data[current_byte + 0];
@@ -687,7 +687,7 @@ void Chunk::blend_chunk(MapTileMatrix& map, int row_change, int col_change)
     {
         return;
     }
-    
+
     if(other.base_tile != chunk_type.base_tile)
     {
         //Keep in mind that if you have two map tiles, one with NORMAL and one
@@ -696,7 +696,7 @@ void Chunk::blend_chunk(MapTileMatrix& map, int row_change, int col_change)
         //blending will only ever happen if both chunks have NORMAL. You
         //probably knew this, but it's hard to tell from the way the code is
         //laid out. Otherwise this is freaking sweet. -SAY
-        
+
         //That's actually exactly what I wanted to happen.  I forget if I made a note of
         //this in the commit log, but there's an order of precendence--if one chunk has a
         //"hard" blend type (e.g. water), then I want a hard line between them, regardless
@@ -723,7 +723,7 @@ void Chunk::blend_hard(int row, int col, MapTile other)
 
 void Chunk::blend_normal(int row, int col, MapTile other)
 {
-    
+
     //Check where we should start blending from
     //The only time we don't want to start at a 0 point is
     //if the change is 1.
@@ -743,8 +743,8 @@ void Chunk::blend_normal(int row, int col, MapTile other)
     //Find the end coordinate for our iteration
     int x_end = start_x + (x_range * x_iter);
     int y_end = start_y + (y_range * y_iter);
-   
-    
+
+
     for(int i = start_y;i != y_end;i += y_iter)
     {
         for(int j = start_x; j != x_end; j += x_iter)

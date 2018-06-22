@@ -23,7 +23,7 @@
 #define __FRAME_H
 
 #include <vector>
-#include <actor.h>
+#include "actor.h"
 
 /**
  * The class for a single frame in an animation.

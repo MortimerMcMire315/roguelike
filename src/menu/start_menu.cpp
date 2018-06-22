@@ -19,16 +19,16 @@
  *  along with ROGUELIKETHING.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "menu.h"
 #include <boost/date_time/posix_time/posix_time.hpp>
 #include <boost/date_time/posix_time/posix_time_io.hpp>
 #include <boost/filesystem.hpp>
 #include <assert.h>
 #include <sstream>
 
-#include <defs.h>
-#include <game.h>
-#include <world_map_gui.h>
+#include "menu.h"
+#include "defs.h"
+#include "game.h"
+#include "world_map_gui.h"
 
 
 using namespace boost::posix_time;

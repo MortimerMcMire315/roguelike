@@ -24,9 +24,10 @@
 
 #include <string>
 #include <vector>
-#include <game.h>
-#include <utility.h>
 #include <map>
+
+#include "game.h"
+#include "utility.h"
 
 class DebugConsole;
 
@@ -66,12 +67,12 @@ static std::string db_messages[10] = {
 class DebugConsole
 {
     private:
-        
+
         /**
          * A buffer to hold the previous commands which have been input.
          */
         std::vector<std::string> buffer;
-        
+
         /**
          * An index of where the most recent command is in the buffer.
          */
@@ -80,17 +81,17 @@ class DebugConsole
          * The current place that we are in the buffer.
          */
         int current_place;
-        
+
         /**
          * The maximum size of the buffer.
          */
         int buffer_size;
-        
+
         /**
          * The message to show the player.
          */
         std::string debug_message;
-        
+
         /**
          * An instance of the game so the console can do things.
          */
@@ -108,7 +109,7 @@ class DebugConsole
          * Empty constructor.
          */
         DebugConsole();
-        
+
         /**
          * Constructor for DebugConsole.
          * @param _game Sets the game member object to _game.
@@ -121,7 +122,7 @@ class DebugConsole
          * @param command The command to run.
          */
         void run_command(std::string input);
-        
+
         /**
          * Accessor for the member variable debug_message.
          * @return Member variable debug_message.
@@ -143,21 +144,21 @@ class DebugConsole
          * @param args The list of int arguments for the function.
          */
         void help(std::vector<std::string> command, std::vector<int> args);
-        
+
         /**
          * Lists something (i.e. your coordinates).
          * @param command The list of string arguments for the function.
          * @param args The list of int arguments for the function.
          */
         void list(std::vector<std::string> command, std::vector<int> args);
-        
+
         /**
          * Kills everything in game.enemy_list.
          * @param command The list of string arguments for the function.
          * @param args The list of int arguments for the function.
          */
         void killall(std::vector<std::string> command, std::vector<int> args);
-        
+
         /**
          * Spawns enemies.
          * @param command The list of string arguments for the function.
@@ -169,7 +170,7 @@ class DebugConsole
          * Teleports the main character.
          * @param command The list of string arguments for the function.
          * @param args The list of int arguments for the function.
-         */ 
+         */
         void teleport(std::vector<std::string> command, std::vector<int> args);
 
         /**

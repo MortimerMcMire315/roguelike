@@ -19,32 +19,32 @@
  *  along with ROGUELIKETHING.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <ai_defs.h>
+#include "ai_defs.h"
 
 //Make one of these for EVERY TREE YOU MAKE.
 
 
 //     DEATH TREE      //
 /////////////////////////
-//                           
+//
 //            Root^
-//             |    
-//             |    
-//         +---+------+ 
-//         |          | 
+//             |
+//             |
+//         +---+------+
+//         |          |
 //      ShouldDie*   Die
 //         |
 //         |
-//         v 
-//     +---+----+   
+//         v
+//     +---+----+
 //     |        |
 //     |        |
-//  Inverter Inverter 
-//     |        +        
-//     |        |        
-//     v        v        
-//  InWorld  HasHealth    
-//     
+//  Inverter Inverter
+//     |        +
+//     |        |
+//     v        v
+//  InWorld  HasHealth
+//
 /////////////////////////////
 
 BNode* ai::DeathNode()
@@ -53,7 +53,7 @@ BNode* ai::DeathNode()
     std::vector<BNode*> should_die_nodes;
     should_die_nodes.push_back(new InverterNode(new InWorld));
     should_die_nodes.push_back(new InverterNode(new HasHealth));
-    
+
     PriorityNode* should_die = new PriorityNode(should_die_nodes);
 
     death_nodes.push_back(should_die);
@@ -63,38 +63,38 @@ BNode* ai::DeathNode()
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
-//              * = Priority                                                                           
-//              ^ = Sequence                                                                           
-//              } = Branching Conditional                                                              
-//                                                                                                     
-//                                                                                                     
-//                                Root*                                                                
-//                                 +                                                                   
-//                                 |                                                                   
-//       +----------------------------------------------------+                                        
-//       |                         |                          |                                        
-//       |                         |                          v                                        
-//    DeathNode                Attack^                    Wander                                      
-//                                 |                                                                   
-//                                 |                                                                   
-//                        +--------+------------------+                                                
-//                        |                           |                                                
-//                        |                           v                                                
-//                     GetTarget*                     }                                                
-//                        |                           +                                                
-//                        |                           |                                                
-//                 +------+------+          +-------------------------------+                          
-//                 |             |          |         |                     |                          
-//                 v             v          v         |                     |                          
-//             HasValid   EnemyInRange  LowHealth   RunAway^             Attack^                       
-//                                                    |                     |                          
-//                                               +----+----+         +------+-------------+            
-//                                               |         |         |                    |            
-//                                               |         |         |                    }            
-//                                               v         v         v                    |            
-//                                            TurnAway Mo^eAway   TurnTowards    +----------------+    
-//                                                                               |        |       |    
-//                                                                               v        v       v    
+//              * = Priority
+//              ^ = Sequence
+//              } = Branching Conditional
+//
+//
+//                                Root*
+//                                 +
+//                                 |
+//       +----------------------------------------------------+
+//       |                         |                          |
+//       |                         |                          v
+//    DeathNode                Attack^                    Wander
+//                                 |
+//                                 |
+//                        +--------+------------------+
+//                        |                           |
+//                        |                           v
+//                     GetTarget*                     }
+//                        |                           +
+//                        |                           |
+//                 +------+------+          +-------------------------------+
+//                 |             |          |         |                     |
+//                 v             v          v         |                     |
+//             HasValid   EnemyInRange  LowHealth   RunAway^             Attack^
+//                                                    |                     |
+//                                               +----+----+         +------+-------------+
+//                                               |         |         |                    |
+//                                               |         |         |                    }
+//                                               v         v         v                    |
+//                                            TurnAway Mo^eAway   TurnTowards    +----------------+
+//                                                                               |        |       |
+//                                                                               v        v       v
 //                                                                            NextTo    Attack MoveTowards
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -112,7 +112,7 @@ BehaviorTree ai::GENERIC_AGGRESSIVE(Game* game)
     SequenceNode* run_seq = new SequenceNode(run_seq_nodes);
 
     BranchingCondition* second = new BranchingCondition(new LowHealth, run_seq, attack_seq);
-   
+
     std::vector<BNode*> has_target;
     has_target.push_back(new ValidTarget);
     has_target.push_back(new EnemyInRange);
@@ -122,7 +122,7 @@ BehaviorTree ai::GENERIC_AGGRESSIVE(Game* game)
     attack_nodes.push_back(target_node);
     attack_nodes.push_back(second);
     SequenceNode* attack = new SequenceNode(attack_nodes);
-   
+
     //see above
     BNode* death = DeathNode();
 
@@ -130,35 +130,35 @@ BehaviorTree ai::GENERIC_AGGRESSIVE(Game* game)
     root.push_back(death);
     root.push_back(attack);
     root.push_back(new Wander);
-    PriorityNode* root_node = new PriorityNode(root);   
-    
- 
+    PriorityNode* root_node = new PriorityNode(root);
+
+
     BehaviorTree tree = BehaviorTree(root_node, game, 0);
     return tree;
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-//                                                                                      
-//                              Root*                                              
-//                               +                                                 
-//                               |                                                 
-//         +------------------------------------------------+                      
-//         |                     |                          |                      
-//         |                     v                          v                      
-//      DeathNode              Flee^                     Wander                    
-//                               +                                                 
-//                               |                                                 
-//                      +--------+------------+                                    
-//                      |                     |                                    
-//                      |                     |                                    
-//                   GetTarget*             RunAway^                               
-//                      |                     |                                    
-//                      |                +----+----+                               
-//               +------+------+         |         |                               
-//               |             |         |         |                               
-//               v             v         v         v                               
-//           HasValid   EnemyInRange  TurnAway Mo^eAway             
-// 
+//
+//                              Root*
+//                               +
+//                               |
+//         +------------------------------------------------+
+//         |                     |                          |
+//         |                     v                          v
+//      DeathNode              Flee^                     Wander
+//                               +
+//                               |
+//                      +--------+------------+
+//                      |                     |
+//                      |                     |
+//                   GetTarget*             RunAway^
+//                      |                     |
+//                      |                +----+----+
+//               +------+------+         |         |
+//               |             |         |         |
+//               v             v         v         v
+//           HasValid   EnemyInRange  TurnAway Mo^eAway
+//
 ////////////////////////////////////////////////////////////////////////////////
 
 BehaviorTree ai::GENERIC_PASSIVE(Game* game)
@@ -168,7 +168,7 @@ BehaviorTree ai::GENERIC_PASSIVE(Game* game)
     run_seq_nodes.push_back(new TurnAway);
     run_seq_nodes.push_back(new MoveAway);
     SequenceNode* run_seq = new SequenceNode(run_seq_nodes);
-    
+
     std::vector<BNode*> has_target;
     has_target.push_back(new ValidTarget);
     has_target.push_back(new EnemyInRange);
@@ -179,42 +179,42 @@ BehaviorTree ai::GENERIC_PASSIVE(Game* game)
     flee_nodes.push_back(run_seq);
     SequenceNode* flee = new SequenceNode(flee_nodes);
 
-    BNode* death = DeathNode(); 
+    BNode* death = DeathNode();
 
     std::vector<BNode*> root;
     root.push_back(death);
     root.push_back(flee);
     root.push_back(new Wander);
-    PriorityNode* root_node = new PriorityNode(root);   
-    
+    PriorityNode* root_node = new PriorityNode(root);
+
     BehaviorTree tree = BehaviorTree(root_node, game, 1);
     return tree;
 }
-            
-/////////////////////////////////////////////////////////////////////////////////////            
+
+/////////////////////////////////////////////////////////////////////////////////////
 //                               Root*
 //                                |
 //  +------------------------------------------------------------------------+
 //  |                             |                                          |
 //  |                             |                                          v
-//DeathNode                    Attack^                                      Follow^                       
-//                                |                                          |                          
-//             +-----------------------------+                     +---------+----------+            
-//             |         |                   |                     |                    |            
-//             |         |                   }                     |                    ^            
-//             |         |                   |                     v                    |            
-//    MHealthChange  GetMTarget    +---------+------------+     TurnTowardsM       +--------+    
+//DeathNode                    Attack^                                      Follow^
+//                                |                                          |
+//             +-----------------------------+                     +---------+----------+
+//             |         |                   |                     |                    |
+//             |         |                   }                     |                    ^
+//             |         |                   |                     v                    |
+//    MHealthChange  GetMTarget    +---------+------------+     TurnTowardsM       +--------+
 //                                 |         |            |                        |        |
 //                                 v         v            v                        |        |
-//                               HasValid  Attack      FreakOut                 Inverter    |  
+//                               HasValid  Attack      FreakOut                 Inverter    |
 //                                           |                                     |        |
-//                                           }                                     |        |        
-//                                           |                                     v        v       
+//                                           }                                     |        |
+//                                           |                                     v        v
 //                                  +----------------+                          NextToM  MoveTowardM
-//                                  |        |       |    
-//                                  v        v       v    
+//                                  |        |       |
+//                                  v        v       v
 //                               NextTo Mo^eTowards Attack
-//        
+//
 ////////////////////////////////////////////////////////////////////////////////////////////
 //Note: M designates "Master" here.
 BehaviorTree ai::FOLLOW(Game* game)
@@ -241,20 +241,20 @@ BehaviorTree ai::FOLLOW(Game* game)
 
 
     //Death
-    BNode* death = DeathNode(); 
+    BNode* death = DeathNode();
 
     std::vector<BNode*> root;
     root.push_back(death);
     root.push_back(attack);
     root.push_back(follow);
-    PriorityNode* root_node = new PriorityNode(root);   
-    
+    PriorityNode* root_node = new PriorityNode(root);
+
     BehaviorTree tree = BehaviorTree(root_node, game, 2);
     return tree;
 }
 
 //
-/////////////////////////////////////////////////////////////////////////////////////            
+/////////////////////////////////////////////////////////////////////////////////////
 //                               Root*
 //                                |
 //  -------------------------------------------------------------------
@@ -277,17 +277,17 @@ BehaviorTree ai::FOLLOW(Game* game)
 //
 //
 //
-//        
+//
 ////////////////////////////////////////////////////////////////////////////////////////////
-    
+
 BehaviorTree ai::NPC(Game* game)
 {
     std::vector<BNode*> root;
-    BNode* death = DeathNode(); 
+    BNode* death = DeathNode();
     root.push_back(death);
     root.push_back(new Wander);
-    PriorityNode* root_node = new PriorityNode(root);   
-    
+    PriorityNode* root_node = new PriorityNode(root);
+
     BehaviorTree tree = BehaviorTree(root_node, game, 3);
     return tree;
 }

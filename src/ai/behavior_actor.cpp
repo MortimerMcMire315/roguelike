@@ -17,7 +17,7 @@
  *  along with ROGUELIKETHING.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <behavior_actor.h>
+#include "behavior_actor.h"
 
 BActor::BActor()
 {

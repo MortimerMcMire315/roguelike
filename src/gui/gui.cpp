@@ -17,8 +17,8 @@
  *  along with ROGUELIKETHING.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <gui.h>
-#include <menu.h>
+#include "gui.h"
+#include "menu.h"
 
 GUI::GUI() {
     world_map_gui = WorldMapGUI();
@@ -30,8 +30,8 @@ GUI::GUI() {
     ascii = NULL;
     keyset = GAME;
     running = true;
-    debug = DebugConsole(&game); 
-    trees.push_back(ai::GENERIC_AGGRESSIVE(&game)); 
+    debug = DebugConsole(&game);
+    trees.push_back(ai::GENERIC_AGGRESSIVE(&game));
     trees.push_back(ai::GENERIC_PASSIVE(&game));
     trees.push_back(ai::FOLLOW(&game));
     trees.push_back(ai::NPC(&game));

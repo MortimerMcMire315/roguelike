@@ -17,12 +17,13 @@
  *  along with ROGUELIKETHING.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <int_point.h>
 #include <algorithm>
 #include <math.h>
-#include <math_helper.h>
 #include <stdlib.h>
 #include <vector>
+
+#include "math_helper.h"
+#include "int_point.h"
 
 std::vector<IntPoint> bresenham_line(IntPoint&, IntPoint&);
 std::vector<IntPoint> bresenham_circle(IntPoint&, int);

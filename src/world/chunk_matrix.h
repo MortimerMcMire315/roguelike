@@ -24,9 +24,9 @@
 
 #include <vector>
 
-#include <int_point.h>
-#include <world_map.h>
-#include <chunk.h>
+#include "int_point.h"
+#include "world_map.h"
+#include "chunk.h"
 
 
 /**
@@ -70,7 +70,7 @@ class ChunkMatrix
 
         string save_folder;
 
-        
+
     public:
         ChunkMatrix();
         ChunkMatrix(int _diameter, IntPoint center_chunk, MapTileMatrix &world_map, string _save_folder);
@@ -84,7 +84,7 @@ class ChunkMatrix
          */
         void populate_initial(IntPoint center_chunk, MapTileMatrix &world_map);
 
-        
+
         /**
          * Prints a graphic of the chunk matrix and its coordinates.
          */
@@ -130,7 +130,7 @@ class ChunkMatrix
          * @return the central chunk in the model.
          */
         Chunk* get_center_chunk();
-        
+
         /**
          * Gets the coordinates of the center of the matrix.
          */

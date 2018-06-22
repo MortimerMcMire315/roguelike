@@ -20,8 +20,8 @@
  *  along with ROGUELIKETHING.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <building.h>
-#include <tileset.h>
+#include "building.h"
+#include "tileset.h"
 
 Building::Building(){
 };
@@ -65,7 +65,7 @@ void Building::rooms_from_tree(BSpaceTree& tree)
     for(int i=0; i<nodes.size();i++)
     {
         rooms.push_back(Room(nodes[i]->tl_x, nodes[i]->tl_y, nodes[i]->height, nodes[i]->width));
-    }        
+    }
 }
 
 void Building::rooms_to_floor()
@@ -79,7 +79,7 @@ void Building::rooms_to_floor()
             {
                 if(j == room.tl.row || j == room.height+room.tl.row || k == room.tl.col || k == room.width+room.tl.col)
                 {
-                    
+
                     floor_plan[j][k] = wall;
                 }
                 else
@@ -113,7 +113,7 @@ void Building::connect_nodes(BSpaceNode* node)
         {
             do
             {
-                x_coord = rand() % (node->left->width-2) + node->left->tl_x + 1; 
+                x_coord = rand() % (node->left->width-2) + node->left->tl_x + 1;
                 y_coord = node->right->tl_y;
             } while(surrounding_walls(y_coord, x_coord) != 2);
         }
@@ -163,7 +163,7 @@ void Building::add_random_door(BSpaceNode* node)
 
 
 int Building::surrounding_walls(int y, int x)
-{   
+{
     int accum = 0;
     if(y+1 < height && floor_plan[y+1][x] == wall)
     {

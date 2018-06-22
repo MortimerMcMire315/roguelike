@@ -22,23 +22,23 @@
 
 #include <vector>
 #include <unordered_map>
-
-#include <chunk_matrix.h>
-#include <constants.h>
-#include <enemy.h>
-#include <world_map.h>
-#include <utility.h>
-#include <item.h>
-#include <animation.h>
-#include <animation_defs.h>
-#include <defs.h>
-#include <chunk.h>
-#include <character.h>
-#include <bresenham.h>
-#include <pathfinding.h>
 #include <string>
-#include <message.h>
-#include <tileset.h>
+
+#include "chunk_matrix.h"
+#include "constants.h"
+#include "enemy.h"
+#include "world_map.h"
+#include "utility.h"
+#include "item.h"
+#include "animation.h"
+#include "animation_defs.h"
+#include "defs.h"
+#include "chunk.h"
+#include "character.h"
+#include "bresenham.h"
+#include "pathfinding.h"
+#include "message.h"
+#include "tileset.h"
 
 //Forward declarations
 struct Tile;

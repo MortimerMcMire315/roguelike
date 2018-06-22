@@ -17,7 +17,7 @@
  *  along with ROGUELIKETHING.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <math_helper.h>
+#include "math_helper.h"
 
 double perc_to_rad(int percent)
 {

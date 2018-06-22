@@ -21,15 +21,17 @@
 
 #ifndef ENEMY_H
 #define ENEMY_H
-#include <character.h>
-#include <defs.h>
-#include <constants.h>
+
 #include <string>
 #include <vector>
-#include <utility.h>
-#include <constants.h>
-#include <math_helper.h>
-#include <bresenham.h>
+
+#include "character.h"
+#include "defs.h"
+#include "constants.h"
+#include "utility.h"
+#include "constants.h"
+#include "math_helper.h"
+#include "bresenham.h"
 
 using namespace enemies;
 
@@ -51,7 +53,7 @@ class Enemy : public Character
          */
         int id;
 
-        
+
         /**
          * Generates the equipment from a list of EquipType.
          * Loops through a list of possible equipment that an enemy can have,
@@ -72,8 +74,8 @@ class Enemy : public Character
          * @return The weapon that the enemy has.
          */
         Weapon* generate_weapon(std::vector<WeaponType>);
-        
-    
+
+
     public:
         /**
          * The default constructor.
@@ -84,7 +86,7 @@ class Enemy : public Character
          * Constructor without the chunk info.
          */
         Enemy(int _x, int _y, int _depth, EnemyType enemy);
-        
+
         /**
          * The destructoid!
          */

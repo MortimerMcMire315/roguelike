@@ -25,26 +25,26 @@
 #include <SDL/SDL.h>
 #include <boost/date_time/gregorian/gregorian.hpp>
 #include <boost/date_time/posix_time/posix_time.hpp>
-
-#include <virtual_event.h>
-#include <game.h>
-#include <defs.h>
-#include <world_map_gui.h>
-#include <color_def.h>
-#include <game_states.h>
 #include <stdio.h>
 #include <fstream>
-#include <debug.h>
-#include <behavior_tree.h>
-#include <ai_defs.h>
-#include <message.h>
-#include <tileset.h>
+
+#include "virtual_event.h"
+#include "game.h"
+#include "defs.h"
+#include "world_map_gui.h"
+#include "color_def.h"
+#include "game_states.h"
+#include "debug.h"
+#include "behavior_tree.h"
+#include "ai_defs.h"
+#include "message.h"
+#include "tileset.h"
 
 //forward declarations
 class Menu;
 
 
-namespace pt = boost::posix_time; 
+namespace pt = boost::posix_time;
 class GUI : public VirtualEvent {
 
 
@@ -52,7 +52,7 @@ class GUI : public VirtualEvent {
     typedef std::vector<std::vector<Tile> > TileMatrix;
     private:
         void load_font(string);
-        
+
         static const long STD_MS_PER_FRAME = 70;
 
         pt::ptime game_clock;
@@ -61,10 +61,10 @@ class GUI : public VirtualEvent {
         IntPoint direction;
         bool chosen_direction;
         SDLKey last_key;
-        
-        
+
+
         std::string input;
-         
+
         DebugConsole debug;
         KeyState keyset;
         Screen current_screen;
@@ -80,7 +80,7 @@ class GUI : public VirtualEvent {
         SDL_Surface* asciiBase;
         SDL_Surface* ascii;
 
-        
+
         void add_characters(std::vector<Character*> characters);
         int handle_framerate();
         void clear_screen();
@@ -111,14 +111,14 @@ class GUI : public VirtualEvent {
 
         void perform_action_press(SDLKey);
         void perform_action_cont();
-        
+
         /**
          * The function for handling keyboard input for typing text.
          * This function handles text input, as opposed to the player
          * hitting keys to play the game.
          * @param unicode The key pressed.
          */
-        void add_key_input(SDLKey key, Uint16 unicode); 
+        void add_key_input(SDLKey key, Uint16 unicode);
 };
 
 #endif
